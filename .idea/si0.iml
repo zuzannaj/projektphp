@@ -18,6 +18,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/squizlabs/php_codesniffer" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/cache" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/class-loader" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/config" />
@@ -45,6 +46,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/web-server-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/twbs/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
