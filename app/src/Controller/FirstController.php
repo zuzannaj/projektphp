@@ -15,7 +15,7 @@ class FirstController extends AbstractController
     /**
      * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/{name}")
+     * @Route("/first")
      */
 
     public function firstFunction($name): Response
