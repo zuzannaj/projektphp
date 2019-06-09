@@ -18,7 +18,8 @@
         "symfony/framework-bundle": "*",
         "symfony/web-server-bundle": "3.4.*",
         "symfony/yaml": "*",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "^4.3",
+        "twig/extensions": "^1.5"
     },
     "config": {
         "preferred-install": {
