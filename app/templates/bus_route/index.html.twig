@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Routes
+{% endblock %}
+{% block body %}
+    <h1>Routes</h1>
+    {% if data is defined and data|length %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Bus line</th>
+                <th>Stop</th>
+                <th>Order</th>
+                <th scope="col">
+                    Actions
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.bus_line_id }}</td>
+                    <td>{{ item.stop_id }}</td>
+                    <td>{{ item.stop_order }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>
+            Empty list.
+        </p>
+    {% endif %}
+
+{% endblock  %}

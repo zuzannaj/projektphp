@@ -38,7 +38,7 @@ class StopRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('t.id', 'DESC');
+            ->orderBy('s.id', 'DESC');
     }
 
     /**
@@ -50,7 +50,25 @@ class StopRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?: $this->createQueryBuilder('t');
+        return $queryBuilder ?: $this->createQueryBuilder('s');
+    }
+
+    /**
+     * @return array
+     */
+    /*public function findAll(): array
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param int $id
+     * @return array|null
+     */
+    public function findById(int $id): ?array
+    {
+        return isset($this->data[$id]) && count($this->data)
+            ? $this->data[$id] : null;
     }
 
     // /**

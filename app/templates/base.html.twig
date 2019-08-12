@@ -6,9 +6,22 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{{ asset('style.css') }}">
         {% endblock %}
     </head>
-    <body>
+    <body style="background-color: #f9ecec">
+    <nav class="navbar navbar-default" style="background-color: lightblue">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">bus company name</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ url('homepage') }}">Strona główna</a></li>
+                <li><a href="#">Zaloguj</a></li>
+                <li><a href="#">Zarejestruj</a></li>
+            </ul>
+        </div>
+    </nav>
         {% block body %}
 
         {% endblock %}

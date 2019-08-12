@@ -1,23 +1,36 @@
 <?php
+/**
+ * Stop Fixtures.
+ */
 
 namespace App\DataFixtures;
 
+use App\Entity\Stop;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
-class StopFixtures extends Fixture
+/**
+ * Class StopFixtures
+ * @package App\DataFixtures
+ */
+class StopFixtures extends AbstractBaseFixtures
 {
-    public function load(ObjectManager $manager): void
+    /**
+     * Load.
+     *
+     * @param \Doctrine\Common\Persistence\ObjectManager $manager
+     */
+    public function loadData(ObjectManager $manager): void
     {
         $this->faker = Factory::create();
         $this->manager = $manager;
 
         for ($i = 0; $i < 10; ++$i) {
-            $task = new Task();
-            $task->setCity($this->faker->sentence);
-            $task->setName($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $task->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $this->manager->persist($task);
+            $stop= new Stop();
+            $stop->setCity($this->faker->word);
+            $stop->setName($this->faker->sentence);
+            $this->manager->persist($stop);
         }
 
         $manager->flush();

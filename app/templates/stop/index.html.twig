@@ -1,39 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Stops
+    {{ 'title.stop_list'|trans }}
 {% endblock %}
+
 {% block body %}
-    <h1>Stops</h1>
-    {% if data is defined and data|length %}
+    <h1>{{ 'title.stop_list'|trans }}</h1>
+    {% if pagination is defined and pagination|length %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
 
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>City</th>
-                <th>Name</th>
-                <th scope="col">
-                    Actions
-                </th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 's.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.city'|trans, 's.city') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.name'|trans, 's.name') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for item in data %}
+            {% for stop in pagination %}
                 <tr>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.city }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>&nbsp;</td>
+                    <td>{{ stop.id }}</td>
+                    <td>{{ stop.city }}</td>
+                    <td>{{ stop.name }}</td>
+                    <td>
+                        <a href="{{ url('stop_view', {id: stop.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.view'|trans }}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
 
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
     {% else %}
         <p>
-            Empty list.
+            {{ 'message.empty_list'|trans }}
         </p>
     {% endif %}
 
-{% endblock  %}
+{% endblock %}

@@ -1,0 +1,29 @@
+.searchlink a {
+    color: #525252;
+    text-decoration: none;
+}
+
+.searchlink {
+    grid-area: searchlink;
+    text-align: center;
+    font-size: xx-large;
+    border-width: thin;
+    border-color: lightblue;
+    border-style: solid;
+    padding: 20px;
+}
+
+.searchlink:hover {
+    background-color: hotpink;
+}
+
+.container {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns:30% 40% 30%;
+    grid-template-rows:20% 60% 20%;
+    grid-template-areas:
+            ". . ."
+            ". searchlink ."
+            ". . .";
+}
