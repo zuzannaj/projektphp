@@ -30,7 +30,14 @@
                     <td>{{ busroute.stop.name }}</td>
                     <td>{{ busroute.stop_order }}</td>
                     <td>
-                        A
+                        <a href="{{ url('route_view', {id: busroute.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.view'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('route_new', {id: busroute.id}) }}" title="{{ 'action.new'|trans }}">
+                            {{ 'action.new'|trans }}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

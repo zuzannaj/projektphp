@@ -5,10 +5,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Stop.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\StopRepository")
  * @ORM\Table(name="stops")
+ *
+ * @UniqueEntity(fields={"city", "name"})
  */
 class Stop
 {
@@ -28,7 +34,13 @@ class Stop
      *
      * @var string
      *
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @ORM\Column(type="string", length=60)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="1",
+     *     max="60",
+     * )
      */
     private $city;
 
@@ -37,7 +49,13 @@ class Stop
      *
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="1",
+     *     max="100",
+     * )
      */
     private $name;
 
@@ -101,5 +119,14 @@ class Stop
      *
      * @constant int NUMBER_OF_ITEMS
      */
-    const NUMBER_OF_ITEMS = 3;
+    const NUMBER_OF_ITEMS = 6;
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->name;
+    }
 }

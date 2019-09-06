@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\BusRoute;
+use App\Form\BusRouteType;
 use App\Repository\BusRouteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +44,52 @@ class BusRouteController extends AbstractController
         return $this->render(
             'bus_route/index.html.twig',
             ['pagination' => $pagination]
+        );
+    }
+
+    /**
+     * @param BusRouteRepository $repository
+     * @param int $id
+     * @return Response
+     *
+     * @Route("/{id}", name="route_view", requirements={"id": "[1-9]\d*"})
+     */
+    public function view(BusRouteRepository $repository, int $id): Response
+    {
+        return $this->render(
+            'bus_route/view.html.twig',
+            ['item' => $repository->find($id)]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param BusRouteRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/new",
+     *     methods={"GET", "POST"},
+     *     name="route_new",
+     * )
+     */
+    public function new(Request $request, BusRouteRepository $repository): Response
+    {
+        $busRoute = new BusRoute();
+        $form = $this->createForm(BusRouteType::class, $busRoute);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($busRoute);
+
+            return $this->redirectToRoute('route_index');
+        }
+
+        return $this->render(
+            'bus_route/new.html.twig',
+            ['form' => $form->createView()]
         );
     }
 

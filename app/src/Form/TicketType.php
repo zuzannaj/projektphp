@@ -32,7 +32,7 @@ class TicketType extends AbstractType
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
             'createdAt',
@@ -50,7 +50,7 @@ class TicketType extends AbstractType
             ]
         );
         $builder->add(
-            'bus_line',
+            'busLine',
             EntityType::class,
             [
                 'class' => BusLine::class,

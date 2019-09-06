@@ -83,4 +83,13 @@ class BusRoute
      * @constant int NUMBER_OF_ITEMS
      */
     const NUMBER_OF_ITEMS = 10;
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->id;
+    }
 }
