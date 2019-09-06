@@ -95,28 +95,6 @@ class BusRouteRepository extends ServiceEntityRepository
      * @param $value
      * @return mixed
      */
-    /*public function search($value)
-    {
-        $qb = $this->getOrCreateQueryBuilder()
-            ->leftJoin('br.stop', 's')
-            ->leftJoin('br.bus_line', 'bl')
-            ->addSelect('s.name')
-            ->addSelect('bl.number')
-            ->where($this->expr()->like('s.name', ':value'))
-            ->setParameter('value','%'.$value.'%')
-            ->getQuery()
-            ->getResult();
-
-        $qb1 = $this->getOrCreateQueryBuilder();
-
-        return $qb1->leftJoin('br.stop', 's')
-            ->leftJoin('br.bus_line', 'bl')
-            ->addSelect('s.name')
-            ->addSelect('bl.number')
-            ->where($qb1->expr()->like('bl.number', $this->$qb))
-            ->getQuery()
-            ->getResult();
-    }*/
     public function search($value)
     {
         $qb = $this->getOrCreateQueryBuilder();
@@ -126,6 +104,25 @@ class BusRouteRepository extends ServiceEntityRepository
             ->addSelect('s.name')
             ->addSelect('bl.number')
             ->where($qb->expr()->like('s.name', ':value'))
+            ->setParameter('value','%'.$value.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function showLine($value)
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->leftJoin('br.stop', 's')
+            ->leftJoin('br.bus_line', 'bl')
+            ->addSelect('br.stop_order')
+            ->addSelect('s.name')
+            ->where($qb->expr()->like('bl.number', ':value'))
+            ->orderBy('br.stop_order')
             ->setParameter('value','%'.$value.'%')
             ->getQuery()
             ->getResult();

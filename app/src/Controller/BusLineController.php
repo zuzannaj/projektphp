@@ -23,11 +23,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class BusLineController extends AbstractController
 {
     /**
-     * Index action.
-     *
-     * @param \App\Repository\BusLineRepository $repository Repository
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @param Request $request
+     * @param BusLineRepository $repository
+     * @param PaginatorInterface $paginator
+     * @return Response
      *
      * @Route(
      *     "/",
@@ -117,9 +116,9 @@ class BusLineController extends AbstractController
      *     name="busline_delete",
      * )
      */
-    public function delete(Request $request, BusLine $busline, BusLineRepository $repository): Response
+    public function delete(Request $request, BusLine $busLine, BusLineRepository $repository): Response
     {
-        $form = $this->createForm(FormType::class, $busline, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $busLine, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
@@ -127,7 +126,7 @@ class BusLineController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->delete($busline);
+            $repository->delete($busLine);
             $this->addFlash('success', 'message.deleted_successfully');
 
             return $this->redirectToRoute('busline_index');
@@ -137,7 +136,7 @@ class BusLineController extends AbstractController
             'bus_line/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'busline' => $busline,
+                'busLine' => $busLine,
             ]
         );
     }

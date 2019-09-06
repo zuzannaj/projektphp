@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Bus line repository.
+ */
 namespace App\Repository;
 
 use App\Entity\BusLine;
@@ -15,6 +17,10 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BusLineRepository extends ServiceEntityRepository
 {
+    /**
+     * BusLineRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BusLine::class);
@@ -42,24 +48,26 @@ class BusLineRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?: $this->createQueryBuilder('bl');
     }
-
+/*
     /**
      * @return array
      */
-    /*public function findAll(): array
+/*
+    public function findAll(): array
     {
-        return $this->data;
+        return $this->id;
     }
 
     /**
      * @param int $id
      * @return array|null
      */
+/*
     public function findById(int $id): ?array
     {
         return isset($this->data[$id]) && count($this->data)
             ? $this->data[$id] : null;
-    }
+    }*/
 
     /**
      * Save record.
@@ -69,7 +77,7 @@ class BusLineRepository extends ServiceEntityRepository
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(BusLine $busline): void
+    public function save(BusLine $busline)
     {
         $this->_em->persist($busline);
         $this->_em->flush($busline);
@@ -83,7 +91,7 @@ class BusLineRepository extends ServiceEntityRepository
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(BusLine $busline): void
+    public function delete(BusLine $busline)
     {
         $this->_em->remove($busline);
         $this->_em->flush($busline);
@@ -98,10 +106,9 @@ class BusLineRepository extends ServiceEntityRepository
         return $this->findOneBy(['number' => $line]);
     }
 
-    // /**
-    //  * @return BusLine[] Returns an array of BusLine objects
-    //  */
-    /*
+    /**
+    * @return BusLine[] Returns an array of BusLine objects
+    */
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('b')
@@ -113,10 +120,13 @@ class BusLineRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?BusLine
+    /**
+     * @param $value
+     * @return BusLine|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findOneBySomeField($value): BusLine
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')
@@ -125,5 +135,4 @@ class BusLineRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
 }

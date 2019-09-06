@@ -1,15 +1,16 @@
 <?php
 /**
- * Stop type.
+ * Ticket type.
  */
 
 namespace App\Form;
 
+use App\Entity\BusLine;
+use App\Entity\Ticket;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Class StopType.
  *
  */
-class UserType extends AbstractType
+class TicketType extends AbstractType
 {
     /**
      * Builds the form.
@@ -34,34 +35,25 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'email',
-            EmailType::class,
+            'createdAt',
+            DateType::class,
             [
-                'label' => 'label.email',
+                'label' => 'label.createdAt',
                 'required' => true,
-                'attr' => ['max_length' => 128],
             ]
         );
-
         $builder->add(
-            'password',
-            RepeatedType::class,
+            'user',
+            EntityType::class,
             [
-                'type' => PasswordType::class,
-                'required' => true,
-                'first_options' => ['label' => 'label.password'],
-                'second_options' => ['label' => 'label.confirm_pass'],
-                'attr' => ['max_length' => 255],
+                'class' => User::class,
             ]
         );
-
         $builder->add(
-            'firstName',
-            TextType::class,
+            'bus_line',
+            EntityType::class,
             [
-                'label' => 'label.firstname',
-                'required' => true,
-                'attr' => ['max_length' => 255],
+                'class' => BusLine::class,
             ]
         );
     }
@@ -72,10 +64,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'validation_groups' => [
-                User::class,
-                'register',
-            ],
+            'data_class' => Ticket::class,
         ]);
     }
 
@@ -89,7 +78,7 @@ class UserType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'user';
+        return 'ticket';
     }
 }
 

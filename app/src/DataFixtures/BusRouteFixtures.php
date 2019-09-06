@@ -41,6 +41,6 @@ class BusRouteFixtures extends AbstractBaseFixtures implements DependentFixtureI
      */
     public function getDependencies(): array
     {
-        return [StopFixtures::class, BusRouteFixtures::class];
+        return [StopFixtures::class, BusLineFixtures::class];
     }
 }

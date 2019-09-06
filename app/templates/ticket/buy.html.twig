@@ -1,0 +1,9 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'title.ticket_buy',
+    page_title_param: {'%id%': busLine.id},
+    attr: {
+        method: 'POST',
+        action: url('homepage')
+    },
+    back_to_list_path: 'homepage',
+} %}

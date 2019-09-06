@@ -1,9 +1,10 @@
 <?php
-
+/**
+ * Bus line entity.
+ */
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BusLineRepository")
@@ -52,6 +53,15 @@ class BusLine
         $this->number = $number;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->number;
     }
 
     /**

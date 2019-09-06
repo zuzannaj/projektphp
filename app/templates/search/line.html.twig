@@ -21,13 +21,13 @@
             </tr>
             </thead>
             <tbody>
-            {% for busroute in pagination %}
+            {% for stop in pagination %}
                 <tr>
-                    <td>{{ busroute.name }}</td>
-                    <td>{{ busroute.number }}</td>
+                    <td>{{ stop.stop_order }}</td>
+                    <td>{{ stop.name }}</td>
                     <td>
-                        <a href="{{ url('searchsearchresults_line', {number: busroute.number}) }}" title="{{ 'action.new'|trans }}">
-                            {{ 'action.new'|trans }}
+                        <a href="{{ url('searchticket_buy') }}" title="{{ 'action.buy'|trans }}">
+                            {{ 'action.buy'|trans }}
                         </a>
                     </td>
                 </tr>
@@ -46,4 +46,6 @@
     {% endif %}
 
 {% endblock %}
+
+
 

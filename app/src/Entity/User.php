@@ -5,6 +5,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -74,7 +76,7 @@ class User implements UserInterface
      *
      * @ORM\Column(type="datetime")
      *
-     * @Assert\DateTime
+     * @Assert\DateTime(groups={"register"})
      */
     private $createdAt;
 
@@ -87,7 +89,7 @@ class User implements UserInterface
      *
      * @ORM\Column(type="datetime")
      *
-     * @Assert\DateTime
+     * @Assert\DateTime(groups={"register"})
      */
     private $updatedAt;
 
@@ -101,8 +103,8 @@ class User implements UserInterface
      *     length=128,
      * )
      *
-     * @Assert\NotBlank
-     * @Assert\Email
+     * @Assert\NotBlank(groups={"register"})
+     * @Assert\Email(groups={"register"})
      */
     private $email;
 
@@ -111,13 +113,17 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"register", "change_password"})
      * @Assert\Length(
      *     min="3",
      *     max="255",
+     *     groups={"register", "change_password"}
      * )
      *
-     * @SecurityAssert\UserPassword
+     * @SecurityAssert\UserPassword(
+     *     message = "error.wrong_current_password",
+     *     groups={"change_password"}
+     * )
      */
     private $password;
 
@@ -133,13 +139,19 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"register"})
      * @Assert\Length(
      *     min="3",
      *     max="255",
+     *     groups={"register"}
      * )
      */
     private $firstName;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="user", orphanRemoval=true)
+     */
+    private $tickets;
 
     /**
      * Getter for the Id.
@@ -156,7 +168,7 @@ class User implements UserInterface
      *
      * @return \DateTimeInterface|null Created At
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -176,7 +188,7 @@ class User implements UserInterface
      *
      * @return \DateTimeInterface|null updated at
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): \DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -302,5 +314,64 @@ class User implements UserInterface
     public function setFirstName(string $firstName): void
     {
         $this->firstName = $firstName;
+    }
+
+    /**
+     * User constructor.
+     * @throws \Exception
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->tickets = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTickets(): Collection
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param Ticket $ticket
+     * @return User
+     */
+    public function addTicket(Ticket $ticket): self
+    {
+        if (!$this->tickets->contains($ticket)) {
+            $this->tickets[] = $ticket;
+            $ticket->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Ticket $ticket
+     * @return User
+     */
+    public function removeTicket(Ticket $ticket): self
+    {
+        if ($this->tickets->contains($ticket)) {
+            $this->tickets->removeElement($ticket);
+            // set the owning side to null (unless already changed)
+            if ($ticket->getUser() === $this) {
+                $ticket->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->id;
     }
 }
