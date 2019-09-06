@@ -1,10 +1,10 @@
 <?php
-
+/**
+ * Stop entity.
+ */
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StopRepository")
@@ -46,7 +46,7 @@ class Stop
      *
      * @return int|null Id
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }

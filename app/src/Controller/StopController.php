@@ -10,7 +10,6 @@ use App\Form\StopType;
 use App\Repository\StopRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,11 +22,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class StopController extends AbstractController
 {
     /**
-     * Index action.
-     *
-     * @param \App\Repository\StopRepository $repository Repository
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @param StopRepository $repository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
      *
      * @Route(
      *     "/",
@@ -51,7 +49,7 @@ class StopController extends AbstractController
     /**
      * @param StopRepository $repository
      * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response Http response
+     * @return Response
      *
      * @Route("/{id}", name="stop_view", requirements={"id": "[1-9]\d*"})
      */
@@ -64,13 +62,9 @@ class StopController extends AbstractController
     }
 
     /**
-     * New action.
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\StopRepository        $repository Stop repository
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
+     * @param Request $request
+     * @param StopRepository $repository
+     * @return Response
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *

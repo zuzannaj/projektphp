@@ -54,24 +54,6 @@ class StopRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array
-     */
-    /*public function findAll(): array
-    {
-        return $this->data;
-    }*/
-
-    /**
-     * @param int $id
-     * @return array|null
-     */
-    public function findById(int $id): ?array
-    {
-        return isset($this->data[$id]) && count($this->data)
-            ? $this->data[$id] : null;
-    }
-
-    /**
      * Save record.
      *
      * @param \App\Entity\Stop $stop Stop entity
@@ -79,7 +61,7 @@ class StopRepository extends ServiceEntityRepository
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Stop $stop): void
+    public function save(Stop $stop)
     {
         $this->_em->persist($stop);
         $this->_em->flush($stop);
@@ -93,7 +75,7 @@ class StopRepository extends ServiceEntityRepository
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(Stop $stop): void
+    public function delete(Stop $stop)
     {
         $this->_em->remove($stop);
         $this->_em->flush($stop);
@@ -134,5 +116,21 @@ class StopRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    /**
+     * @param int $id
+     * @return array|null
+     */
+    /*
+    public function findById(int $id): array
+    {
+        return isset($this->data[$id]) && count($this->data)
+            ? $this->data[$id] : null;
+    }
+    /**
+     * @return array
+     */
+    /*public function findAll(): array
+    {
+        return $this->data;
+    }*/
 }

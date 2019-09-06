@@ -158,7 +158,7 @@ class User implements UserInterface
      *
      * @return int|null Result
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -178,7 +178,7 @@ class User implements UserInterface
      *
      * @param \DateTimeInterface $createdAt Created At
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    public function setCreatedAt(\DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -198,7 +198,7 @@ class User implements UserInterface
      *
      * @param \DateTimeInterface $updatedAt Updated at
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
+    public function setUpdatedAt(\DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
@@ -208,7 +208,7 @@ class User implements UserInterface
      *
      * @return string|null E-mail
      */
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -218,7 +218,7 @@ class User implements UserInterface
      *
      * @param string $email E-mail
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -240,7 +240,7 @@ class User implements UserInterface
      *
      * @return string|null Password
      */
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -250,7 +250,7 @@ class User implements UserInterface
      *
      * @param string $password Password
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
@@ -274,7 +274,7 @@ class User implements UserInterface
      *
      * @param array $roles Roles
      */
-    public function setRoles(array $roles): void
+    public function setRoles(array $roles)
     {
         $this->roles = $roles;
     }
@@ -301,7 +301,7 @@ class User implements UserInterface
      *
      * @return string|null First name
      */
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -311,7 +311,7 @@ class User implements UserInterface
      *
      * @param string $firstName First Name
      */
-    public function setFirstName(string $firstName): void
+    public function setFirstName(string $firstName)
     {
         $this->firstName = $firstName;
     }

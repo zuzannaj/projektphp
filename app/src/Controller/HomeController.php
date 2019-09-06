@@ -1,18 +1,20 @@
 <?php
-
+/**
+ * Home controller.
+ */
 namespace App\Controller;
 
-use App\Entity\BusRoute;
-use App\Repository\BusRouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class HomeController
+ * @package App\Controller
+ */
 class HomeController extends Controller
 {
     /**
-     * Index action.
+     * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/", name="homepage")
      */
@@ -20,5 +22,4 @@ class HomeController extends Controller
     {
         return $this->render('home/index.html.twig');
     }
-
 }

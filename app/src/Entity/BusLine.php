@@ -28,8 +28,7 @@ class BusLine
     /**
      * @return int|null
      */
-
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -38,7 +37,7 @@ class BusLine
      * @return int|null
      */
 
-    public function getNumber(): ?int
+    public function getNumber(): int
     {
         return $this->number;
     }
