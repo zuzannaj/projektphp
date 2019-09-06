@@ -15,20 +15,16 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'br.id') }}</th>
-                <th>{{ 'label.bus_line'|trans }}</th>
-                <th>{{ 'label.stop'|trans }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.order'|trans, 'br.stop_order') }}</th>
-                <th>{{ 'label.actions'|trans }}</th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
             </tr>
             </thead>
             <tbody>
             {% for busroute in pagination %}
                 <tr>
-                    <td>{{ busroute.id }}</td>
-                    <td>{{ busroute.busline.number }}</td>
-                    <td>{{ busroute.stop.name }}</td>
-                    <td>{{ busroute.stop_order }}</td>
+                    <td>{{ busroute.name }}</td>
+                    <td>{{ busroute.number }}</td>
                     <td>
                         A
                     </td>

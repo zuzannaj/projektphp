@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    View item
+{% endblock %}
+
+{% block body %}
+    <h1>View item</h1>
+    {% if item is defined and item|length %}
+        <dl>
+            <dt>Id</dt>
+            <dd>{{ item.id }}</dd>
+            <dt>Number</dt>
+            <dd>{{ item.number }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            Item not found.
+        </p>
+    {% endif %}
+{% endblock %}

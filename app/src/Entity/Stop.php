@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StopRepository")
@@ -19,14 +21,14 @@ class Stop
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * City.
      *
      * @var string
      *
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $city;
 
@@ -35,7 +37,7 @@ class Stop
      *
      * @var string
      *
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $name;
 
@@ -60,9 +62,8 @@ class Stop
     }
 
     /**
-     * Setter for City.
-     *
-     * @param string $title City
+     * @param string $city
+     * @return Stop
      */
     public function setCity(string $city): self
     {
@@ -82,9 +83,9 @@ class Stop
     }
 
     /**
-     * Setter for Name.
+     * @param string $name
      *
-     * @param string $title Name
+     * @return Stop
      */
     public function setName(string $name): self
     {

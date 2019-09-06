@@ -19,6 +19,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.city'|trans, 's.city') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.name'|trans, 's.name') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -30,6 +32,16 @@
                     <td>
                         <a href="{{ url('stop_view', {id: stop.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('stop_new', {id: stop.id}) }}" title="{{ 'action.new'|trans }}">
+                            {{ 'action.new'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('stop_delete', {id: stop.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
                         </a>
                     </td>
                 </tr>

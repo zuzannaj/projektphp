@@ -1,0 +1,9 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'title.stop_delete',
+    page_title_param: {'%id%': stop.id},
+    attr: {
+        method: 'DELETE',
+        action: url('stop_delete', {'id': stop.id}),
+    },
+    back_to_list_path: 'stop_index',
+} %}

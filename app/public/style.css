@@ -1,19 +1,35 @@
-.searchlink a {
+.searchlink a, .stops_btn a, .lines_btn a, .routes_btn a {
     color: #525252;
     text-decoration: none;
 }
 
-.searchlink {
-    grid-area: searchlink;
+.searchlink, .stops_btn, .lines_btn, .routes_btn {
     text-align: center;
     font-size: xx-large;
     border-width: thin;
     border-color: lightblue;
     border-style: solid;
     padding: 20px;
+    margin: 5px;
 }
 
-.searchlink:hover {
+.stops_btn {
+    grid-area: stops;
+}
+
+.lines_btn {
+    grid-area: lines;
+}
+
+.routes_btn {
+    grid-area: routes;
+}
+
+.searchlink {
+    grid-area: searchlink;
+}
+
+.searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover {
     background-color: hotpink;
 }
 
@@ -25,5 +41,18 @@
     grid-template-areas:
             ". . ."
             ". searchlink ."
+            ". . .";
+}
+
+.container_admin {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns:30% 40% 30%;
+    grid-template-rows:20% 20% 20% 20% 20%;
+    grid-template-areas:
+            ". . ."
+            ". stops ."
+            ". lines ."
+            ". routes ."
             ". . .";
 }
