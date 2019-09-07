@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    View item
+    {{ 'title.view_item'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>View item</h1>
+    <h1>{{ 'title.view_item'|trans }}</h1>
     {% if item is defined and item|length %}
         <dl>
-            <dt>City</dt>
+            <dt>{{ 'label.city'|trans }}</dt>
             <dd>{{ item.city }}</dd>
-            <dt>Name</dt>
+            <dt>{{ 'label.name'|trans }}</dt>
             <dd>{{ item.name }}</dd>
         </dl>
     {% else %}
         <p>
-            Item not found.
+            {{ 'message.item_not_found'|trans }}
         </p>
     {% endif %}
 {% endblock %}

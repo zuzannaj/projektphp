@@ -38,7 +38,7 @@ class StopRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('s.id', 'DESC');
+            ->orderBy('s.id', 'ASC');
     }
 
     /**
@@ -61,7 +61,7 @@ class StopRepository extends ServiceEntityRepository
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Stop $stop)
+    public function save(Stop $stop): void
     {
         $this->_em->persist($stop);
         $this->_em->flush($stop);
@@ -70,7 +70,7 @@ class StopRepository extends ServiceEntityRepository
     /**
      * Delete record.
      *
-     * @param \App\Entity\Stop $stop Stop entity
+     * @param \App\Entity\Stop $stop Lessons entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

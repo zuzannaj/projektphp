@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}bus company name{% endblock %}
+{% block title %}{{ 'title.bus_company_name'|trans }}{% endblock %}
 
 {% block body %}
     <div class="container_admin">
         <div class="stops_btn">
-            <a href="{{ url('stop_index') }}">Stops</a>
+            <a href="{{ url('stop_index') }}">{{ 'label.stops'|trans }}</a>
         </div>
         <div class="lines_btn">
-            <a href="{{ url('busline_index') }}">Bus lines</a>
+            <a href="{{ url('busline_index') }}">{{ 'label.buslines'|trans }}</a>
         </div>
         <div class="routes_btn">
-            <a href="{{ url('route_index') }}">Routes</a>
+            <a href="{{ url('route_index') }}">{{ 'label.routes'|trans }}</a>
+        </div>
+        <div class="users_btn">
+            <a href="{{ url('admin_paneluser_index') }}">{{ 'label.users'|trans }}</a>
         </div>
     </div>
 {% endblock %}

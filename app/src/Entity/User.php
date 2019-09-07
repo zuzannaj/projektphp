@@ -208,7 +208,7 @@ class User implements UserInterface
      *
      * @return string|null E-mail
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -230,7 +230,7 @@ class User implements UserInterface
      *
      * @return string User name
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return (string) $this->email;
     }
@@ -240,7 +240,7 @@ class User implements UserInterface
      *
      * @return string|null Password
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -301,7 +301,7 @@ class User implements UserInterface
      *
      * @return string|null First name
      */
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }

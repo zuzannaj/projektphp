@@ -35,25 +35,28 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'createdAt',
-            DateType::class,
-            [
-                'label' => 'label.createdAt',
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'user',
-            EntityType::class,
-            [
-                'class' => User::class,
-            ]
-        );
-        $builder->add(
             'busLine',
             EntityType::class,
             [
                 'class' => BusLine::class,
+            ]
+        );
+        $builder->add(
+            'firstStop',
+            TextType::class,
+            [
+                'label' => 'label.first_stop',
+                'required' => true,
+                'attr' => ['max_length' => 255],
+            ]
+        );
+        $builder->add(
+            'lastStop',
+            TextType::class,
+            [
+                'label' => 'label.first_stop',
+                'required' => true,
+                'attr' => ['max_length' => 255],
             ]
         );
     }

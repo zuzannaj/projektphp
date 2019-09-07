@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" datatype="plaintext" original="file.ext">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="label.id">
                 <source>label.id</source>
@@ -8,147 +8,147 @@
             </trans-unit>
             <trans-unit id="title.stop_list">
                 <source>title.stop_list</source>
-                <target>Stops</target>
+                <target>Przystanki</target>
             </trans-unit>
             <trans-unit id="title">
                 <source>title</source>
-                <target>Title</target>
+                <target>Tytuł</target>
             </trans-unit>
 
             <trans-unit id="label.stops">
                 <source>label.stops</source>
-                <target>Stops</target>
+                <target>Przystanki</target>
             </trans-unit>
 
             <trans-unit id="label.buslines">
                 <source>label.buslines</source>
-                <target>Bus lines</target>
+                <target>Linie</target>
             </trans-unit>
 
             <trans-unit id="label.routes">
                 <source>label.routes</source>
-                <target>Routes</target>
+                <target>Trasy</target>
             </trans-unit>
 
             <trans-unit id="title.bus_company_name">
                 <source>title.bus_company_name</source>
-                <target>bus company name</target>
+                <target>nazwa firmy</target>
             </trans-unit>
 
             <trans-unit id="action.new">
                 <source>action.new</source>
-                <target>New</target>
+                <target>Nowy</target>
             </trans-unit>
 
             <trans-unit id="title.busline_delete">
                 <source>title.busline_delete</source>
-                <target>Delete bus line</target>
+                <target>Usuń linię</target>
             </trans-unit>
 
             <trans-unit id="label.number">
             <source>label.number</source>
-            <target>Number</target>
+            <target>Numer</target>
             </trans-unit>
 
             <trans-unit id="title.buslines">
                 <source>title.buslines</source>
-                <target>Bus lines</target>
+                <target>Linie</target>
             </trans-unit>
 
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>Empty list</target>
+                <target>Pusta lista</target>
             </trans-unit>
 
             <trans-unit id="title.busline_new">
                 <source>title.busline_new</source>
-                <target>New bus line</target>
+                <target>Nowa linia</target>
             </trans-unit>
 
             <trans-unit id="label.actions">
                 <source>label.actions</source>
-                <target>Actions</target>
+                <target>Akcja</target>
             </trans-unit>
 
             <trans-unit id="label.action.new">
                 <source>label.action.new</source>
-                <target>Add new</target>
+                <target>Dodaj</target>
             </trans-unit>
 
             <trans-unit id="title.view_item">
                 <source>title.view_item</source>
-                <target>View item</target>
+                <target>Wyświetl</target>
             </trans-unit>
 
             <trans-unit id="action.view">
                 <source>action.view</source>
-                <target>More</target>
+                <target>Więcej</target>
             </trans-unit>
 
             <trans-unit id="action.edit">
                 <source>action.edit</source>
-                <target>Edit</target>
+                <target>Edytuj</target>
             </trans-unit>
 
             <trans-unit id="action.delete">
                 <source>action.delete</source>
-                <target>Delete</target>
+                <target>Usuń</target>
             </trans-unit>
 
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
-                <target>Go back</target>
+                <target>Powrót</target>
             </trans-unit>
 
             <trans-unit id="action.save">
                 <source>action.save</source>
-                <target>Save</target>
+                <target>Zapisz</target>
             </trans-unit>
             <trans-unit id="message.item_not_found">
                 <source>message.item_not_found</source>
-                <target>Item not found</target>
+                <target>Nie znaleziono elementu</target>
             </trans-unit>
 
             <trans-unit id="title.bus_route_list">
                 <source>title.bus_route_list</source>
-                <target>Bus route list</target>
+                <target>Lista tras</target>
             </trans-unit>
             <trans-unit id="label.bus_line">
                 <source>label.bus_line</source>
-                <target>Bus line</target>
+                <target>Linia</target>
             </trans-unit>
 
             <trans-unit id="label.name">
                 <source>label.name</source>
-                <target>Name</target>
+                <target>Nazwa</target>
             </trans-unit>
             <trans-unit id="label.stop">
                 <source>label.stop</source>
-                <target>Stop</target>
+                <target>Przystanek</target>
             </trans-unit>
             <trans-unit id="label.order">
                 <source>label.order</source>
-                <target>Order</target>
+                <target>Kolejność</target>
             </trans-unit>
             <trans-unit id="title.route_new">
                 <source>title.route_new</source>
-                <target>New bus route</target>
+                <target>Nowa trasa</target>
             </trans-unit>
             <trans-unit id="label.city">
                 <source>label.city</source>
-                <target>City</target>
+                <target>Miasto</target>
             </trans-unit>
             <trans-unit id="action.buy">
                 <source>action.buy</source>
-                <target>Buy</target>
+                <target>Kup</target>
             </trans-unit>
             <trans-unit id="title.stop_new">
                 <source>title.stop_new</source>
-                <target>New stop</target>
+                <target>Nowy przystanek</target>
             </trans-unit>
             <trans-unit id="title.ticket_list">
                 <source>title.ticket_list</source>
-                <target>Ticket list</target>
+                <target>Lista biletów</target>
             </trans-unit>
 
             <trans-unit id="title.login">
@@ -161,35 +161,31 @@
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
-                <target>Password</target>
+                <target>Hasło</target>
             </trans-unit>
             <trans-unit id="action.login">
                 <source>action.login</source>
-                <target>Login</target>
+                <target>Zaloguj</target>
             </trans-unit>
             <trans-unit id="label.created_at">
                 <source>label.created_at</source>
-                <target>Created at</target>
+                <target>Data utworzenia</target>
             </trans-unit>
             <trans-unit id="label.firststop">
                 <source>label.firststop</source>
-                <target>First stop</target>
+                <target>Pierwszy przystanek</target>
             </trans-unit>
             <trans-unit id="label.laststop">
                 <source>label.laststop</source>
-                <target>Last stop</target>
+                <target>Ostatni przystanek</target>
             </trans-unit>
             <trans-unit id="Register">
                 <source>Register</source>
-                <target>Register</target>
+                <target>Zarejestruj</target>
             </trans-unit>
             <trans-unit id="Login">
                 <source>Login</source>
-                <target>Login</target>
-            </trans-unit>
-            <trans-unit id="Lessons">
-                <source>Lessons</source>
-                <target>Lessons</target>
+                <target>Zaloguj</target>
             </trans-unit>
             <trans-unit id="Profile">
                 <source>Profile</source>
@@ -197,55 +193,55 @@
             </trans-unit>
             <trans-unit id="Admin Panel">
                 <source>Admin Panel</source>
-                <target>Admin Panel</target>
+                <target>Panel admina</target>
             </trans-unit>
             <trans-unit id="title.register">
                 <source>title.register</source>
-                <target>Register</target>
+                <target>Zarejestruj</target>
             </trans-unit>
             <trans-unit id="label.Password">
                 <source>label.Password</source>
-                <target>Password</target>
+                <target>Hasło</target>
             </trans-unit>
             <trans-unit id="label.Repeat_Password">
                 <source>label.Repeat_Password</source>
-                <target>Repeat Password</target>
+                <target>Powtórz hasło</target>
             </trans-unit>
             <trans-unit id="Logout">
                 <source>Logout</source>
-                <target>Logout</target>
+                <target>Wyloguj</target>
             </trans-unit>
             <trans-unit id="button.logout">
                 <source>button.logout</source>
-                <target>Log out</target>
+                <target>Wyloguj</target>
             </trans-unit>
             <trans-unit id="label.admin_panel">
                 <source>label.admin_panel</source>
-                <target>Admin panel</target>
+                <target>Panel admina</target>
             </trans-unit>
             <trans-unit id="title.homepage">
                 <source>title.homepage</source>
-                <target>Home</target>
+                <target>Strona główna</target>
             </trans-unit>
             <trans-unit id="title.admin">
                 <source>title.admin</source>
-                <target>Admin Panel</target>
+                <target>Panel admina</target>
             </trans-unit>
             <trans-unit id="label.users">
                 <source>label.users</source>
-                <target>Users</target>
+                <target>Użytkownicy</target>
             </trans-unit>
             <trans-unit id="action.deleteUser">
                 <source>action.deleteUser</source>
-                <target>delete User</target>
+                <target>Usuń użytkownika</target>
             </trans-unit>
             <trans-unit id="message.form_error">
                 <source>message.form_error</source>
-                <target>Error</target>
+                <target>Błąd</target>
             </trans-unit>
             <trans-unit id="text.search_for">
                 <source>text.search_for</source>
-                <target>Search for connection</target>
+                <target>Wyszukaj połączenie</target>
             </trans-unit>
         </body>
     </file>

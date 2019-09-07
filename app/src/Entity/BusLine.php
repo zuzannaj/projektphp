@@ -5,6 +5,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BusLineRepository")
@@ -22,6 +23,12 @@ class BusLine
     /**
      * @var int
      * @ORM\Column(type="integer")
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="1",
+     *     max="3",
+     * )
      */
     private $number;
 
@@ -37,7 +44,7 @@ class BusLine
      * @return int|null
      */
 
-    public function getNumber(): int
+    public function getNumber(): ?int
     {
         return $this->number;
     }
@@ -70,5 +77,5 @@ class BusLine
      *
      * @constant int NUMBER_OF_ITEMS
      */
-    const NUMBER_OF_ITEMS = 3;
+    const NUMBER_OF_ITEMS = 6;
 }

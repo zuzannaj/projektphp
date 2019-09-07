@@ -6,9 +6,11 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TicketRepository")
+ * @ORM\Table(name="tickets")
  */
 class Ticket
 {
@@ -34,17 +36,29 @@ class Ticket
      * @ORM\ManyToOne(targetEntity="App\Entity\BusLine")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $bus_line;
+    public $busLine;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = "3",
+     *     max = "255",
+     * )
      */
-    private $first_stop;
+    public $first_stop;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = "3",
+     *     max = "255",
+     * )
      */
-    private $last_stop;
+    public $last_stop;
 
     /**
      * Ticket constructor.
@@ -65,7 +79,7 @@ class Ticket
     /**
      * @return \DateTimeInterface|null
      */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -101,20 +115,20 @@ class Ticket
     }
 
     /**
-     * @return BusLine|null
+     * @return \App\Entity\BusLine
      */
-    public function getBusLine(): BusLine
+    public function getBusLine(): ?BusLine
     {
-        return $this->bus_line;
+        return $this->busLine;
     }
 
     /**
      * @param BusLine|null $bus_line
      * @return Ticket
      */
-    public function setBusLine(BusLine $bus_line): self
+    public function setBusLine(BusLine $busLine): self
     {
-        $this->bus_line = $bus_line;
+        $this->busLine = $busLine;
 
         return $this;
     }
@@ -122,7 +136,7 @@ class Ticket
     /**
      * @return string|null
      */
-    public function getFirstStop(): string
+    public function getFirstStop(): ?string
     {
         return $this->first_stop;
     }
@@ -141,7 +155,7 @@ class Ticket
     /**
      * @return string|null
      */
-    public function getLastStop(): string
+    public function getLastStop(): ?string
     {
         return $this->last_stop;
     }
@@ -156,4 +170,13 @@ class Ticket
 
         return $this;
     }
+
+    /**
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
+     *
+     * @constant int NUMBER_OF_ITEMS
+     */
+    const NUMBER_OF_ITEMS = 6;
 }

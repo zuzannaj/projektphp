@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="BusRouteRepository")
@@ -19,6 +20,12 @@ class BusRoute
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="1",
+     *     max="3",
+     * )
      */
     public $stop_order;
 
@@ -34,16 +41,26 @@ class BusRoute
      */
     public $stop;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return int|null
+     */
     public function getStopOrder(): ?int
     {
         return $this->stop_order;
     }
 
+    /**
+     * @param int $stop_order
+     * @return BusRoute
+     */
     public function setStopOrder(int $stop_order): self
     {
         $this->stop_order = $stop_order;
@@ -51,11 +68,18 @@ class BusRoute
         return $this;
     }
 
+    /**
+     * @return BusLine|null
+     */
     public function getBusLine(): ?BusLine
     {
         return $this->bus_line;
     }
 
+    /**
+     * @param BusLine|null $bus_line
+     * @return BusRoute
+     */
     public function setBusLine(?BusLine $bus_line): self
     {
         $this->bus_line = $bus_line;
@@ -63,11 +87,18 @@ class BusRoute
         return $this;
     }
 
+    /**
+     * @return Stop|null
+     */
     public function getStop(): ?Stop
     {
         return $this->stop;
     }
 
+    /**
+     * @param Stop|null $stop
+     * @return BusRoute
+     */
     public function setStop(?Stop $stop): self
     {
         $this->stop = $stop;

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.bus_route_list'|trans }}
+    {{ 'title.user_list'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.bus_route_list'|trans }}</h1>
+    <h1>{{ 'title.user_list'|trans }}</h1>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -15,19 +15,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ 'label.stop'|trans }}</th>
-                <th>{{ 'label.bus_line'|trans }}</th>
-                <th>{{ 'action.new'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'u.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.email'|trans, 'u.email') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.firstname'|trans, 'u.firstName') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for busroute in pagination %}
+            {% for user in pagination %}
                 <tr>
-                    <td>{{ busroute.name }}</td>
-                    <td>{{ busroute.number }}</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstName }}</td>
                     <td>
-                        <a href="{{ url('searchsearchresults_line', {number: busroute.number}) }}" title="{{ 'action.new'|trans }}">
-                            {{ 'action.new'|trans }}
+                        <a href="{{ url('admin_paneluser_index', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.view'|trans }}
                         </a>
                     </td>
                 </tr>
@@ -46,4 +48,3 @@
     {% endif %}
 
 {% endblock %}
-

@@ -8,6 +8,7 @@ use App\Entity\BusLine;
 use App\Entity\BusRoute;
 use App\Entity\Ticket;
 use App\Form\TicketType;
+use App\Repository\BusLineRepository;
 use App\Repository\BusRouteRepository;
 use App\Repository\TicketRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -93,11 +95,84 @@ class SearchController extends Controller
             $request->query->getInt('page', 1),
             BusRoute::NUMBER_OF_ITEMS
         );
+
         return $this->render('search/line.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'line' => $number,
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param TicketRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/buy",
+     *     methods={"GET", "POST"},
+     *     name="ticket_buy",
+     * )
+     */
+    public function new(Request $request, TicketRepository $repository): Response
+    {
+        $ticket = new Ticket();
+        $form = $this->createForm(TicketType::class, $ticket);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ticket->setCreatedAt(new \DateTime());
+            $ticket->setUser($this->getUser());
+            $repository->save($ticket);
+
+            return $this->redirectToRoute('searchticket_view');
+        }
+
+        return $this->render(
+            'ticket/buy.html.twig',
+            ['form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @param PaginatorInterface $paginator
+     * @param TicketRepository $repository
+     * @param Request $request
+     * @return Response
+     *
+     * @Route(
+     *     "/view",
+     *     methods={"GET", "POST"},
+     *     name="ticket_view",
+     * )
+     */
+    public function viewTickets(PaginatorInterface $paginator, TicketRepository $repository, Request $request)
+    {
+        $pagination = $paginator->paginate(
+            $repository->queryAll(),
+            $request->query->getInt('page', 1),
+            Ticket::NUMBER_OF_ITEMS
+        );
+        return $this->render('ticket/view.html.twig', ['pagination' => $pagination]);
+    }
+
+    /**
+     * @param TicketRepository $repository
+     * @param int $id
+     * @return Response
+     *
+     * @Route("/ticketview/{id}", name="ticket_view_one", requirements={"id": "[1-9]\d*"})
+     */
+    public function viewOne(TicketRepository $repository, int $id): Response
+    {
+        return $this->render(
+            'ticket/view_one.html.twig',
+            ['item' => $repository->find($id)]
+        );
+    }
+/*
     /**
      * @param Request $request
      * @param TicketRepository $repository
@@ -112,6 +187,7 @@ class SearchController extends Controller
      *     name="ticket_buy",
      * )
      */
+/*
     public function buyTicket(Request $request, TicketRepository $repository, BusLine $busLine)
     {
         $ticket = new Ticket();
@@ -136,5 +212,5 @@ class SearchController extends Controller
                 'busLine' => $busLine,
             ]
         );
-    }
+    }*/
 }

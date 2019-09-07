@@ -13,18 +13,20 @@
     <nav class="navbar navbar-default" style="background-color: lightblue">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">bus company name</a>
+                <a class="navbar-brand" href="{{ url('homepage') }}">{{ 'title.bus_company_name'|trans }}</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('homepage') }}">Strona główna</a></li>
+                <li><a href="{{ url('homepage') }}">{{ 'title.homepage'|trans }}</a></li>
                 {% if app.user %}
                 {# <a class="nav-link" href="{{ url("article_new") }}">{{ 'navbar.new_article'|trans }}</a> #}
-                <li>{{ 'navbar.logged_as'|trans }}:
-                <a class="nav-link nav-user" href="{{ path("security_logout", {id: app.user.getId()}) }}">{{ app.user.getFirstName() }}</a></li>
-                    <li><a class="btn btn-red" href="{{ url("security_logout") }}">{{ 'button.logout'|trans }}</a></li>
+                <li><a href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ app.user.getFirstName() }}</a></li>
+                    <li><a href="{{ url("security_logout") }}">{{ 'button.logout'|trans }}</a></li>
                 {% else %}
                 <li><a href="{{ url('security_login') }}">Zaloguj</a></li>
                 <li><a href="{{ url('user_add') }}">Zarejestruj</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ url('admin_paneladmin_panel_index') }}">{{ 'label.admin_panel'|trans }}</a></li>
                 {% endif %}
             </ul>
         </div>

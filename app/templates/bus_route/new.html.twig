@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'city.stop_new'|trans }}
+    {{ 'title.route_new'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'city.stop_new'|trans }}</h1>
+    <h1>{{ 'title.route_new'|trans }}</h1>
     {{ form_start(form, { method: 'POST', action: url('route_new') }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

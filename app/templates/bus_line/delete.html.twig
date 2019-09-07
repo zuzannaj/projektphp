@@ -1,20 +1,10 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-    {{ 'title.busline_delete'|trans({'%id%': busline.id|default('')}) }}
-{% endblock %}
-
-{% block body %}
-    <h1>{{ 'title.busline_delete'|trans({'%id%': busline.id|default('')}) }}</h1>
-    {{ form_start(form, { method: 'DELETE', action: url('busline_delete', {id: busline.id}) }) }}
-    {{ form_widget(form) }}
-    <div class="form-group row float-sm-right">
-        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
-    </div>
-    <div class="form-group row float-sm-left">
-        <a href="{{ url('busline_index') }}" class="btn btn-link">
-            {{ 'action.back_to_list'|trans }}
-        </a>
-    </div>
-    {{ form_end(form) }}
-{% endblock %}
+{% include 'nav.html.twig' %}
+{% include 'default/_form.html.twig' with {
+    page_title: 'title.busline_delete',
+    page_title_param: {'%id%': busline.id},
+    attr: {
+        method: 'DELETE',
+        action: url('busline_delete', {'id': busline.id}),
+    },
+    back_to_list_path: 'busline_index',
+} %}

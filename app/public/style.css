@@ -1,9 +1,9 @@
-.searchlink a, .stops_btn a, .lines_btn a, .routes_btn a {
+.searchlink a, .stops_btn a, .lines_btn a, .routes_btn a, .users_btn a {
     color: #525252;
     text-decoration: none;
 }
 
-.searchlink, .stops_btn, .lines_btn, .routes_btn {
+.searchlink, .stops_btn, .lines_btn, .routes_btn, .users_btn {
     text-align: center;
     font-size: xx-large;
     border-width: thin;
@@ -25,11 +25,15 @@
     grid-area: routes;
 }
 
+.users_btn {
+    grid-area: users;
+}
+
 .searchlink {
     grid-area: searchlink;
 }
 
-.searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover {
+.searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover, .users_btn:hover {
     background-color: hotpink;
 }
 
@@ -48,11 +52,12 @@
     min-height: 100%;
     display: grid;
     grid-template-columns:30% 40% 30%;
-    grid-template-rows:20% 20% 20% 20% 20%;
+    grid-template-rows:20% 15% 15% 15% 15% 20%;
     grid-template-areas:
             ". . ."
             ". stops ."
             ". lines ."
             ". routes ."
+            ". users ."
             ". . .";
 }

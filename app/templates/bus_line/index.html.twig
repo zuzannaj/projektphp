@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Bus lines
+    {{ 'title.buslines'|trans }}
 {% endblock %}
 {% block body %}
-    <h1>Bus lines</h1>
+    <h1>{{ 'title.buslines'|trans }}</h1>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">

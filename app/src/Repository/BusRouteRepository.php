@@ -119,6 +119,7 @@ class BusRouteRepository extends ServiceEntityRepository
 
         return $qb->leftJoin('br.stop', 's')
             ->leftJoin('br.bus_line', 'bl')
+            ->addSelect('bl.number')
             ->addSelect('br.stop_order')
             ->addSelect('s.name')
             ->where($qb->expr()->like('bl.number', ':value'))

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    View item
+    {{ 'title.view_item'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>View item</h1>
+    <h1>{{ 'title.view_item'|trans }}</h1>
     {% if item is defined and item|length %}
         <dl>
-            <dt>Bus line</dt>
+            <dt>{{ 'label.bus_line'|trans }}</dt>
             <dd>{{ item.busline.number }}</dd>
-            <dt>Bus route</dt>
+            <dt>{{ 'label.stop'|trans }}</dt>
             <dd>{{ item.stop.name }}</dd>
-            <dt>Name</dt>
+            <dt>{{ 'label.name'|trans }}</dt>
             <dd>{{ item.stop_order }}</dd>
         </dl>
     {% else %}
