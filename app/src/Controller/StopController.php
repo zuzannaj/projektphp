@@ -93,15 +93,10 @@ class StopController extends AbstractController
     }
 
     /**
-     * Delete action.
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\StopRepository            $repository Stop repository
-     * @param \App\Entity\Stop                          $stop       Stop entity
-     *
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
+     * @param Request $request
+     * @param Stop $stop
+     * @param StopRepository $repository
+     * @return Response
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -112,7 +107,7 @@ class StopController extends AbstractController
      *     name="stop_delete",
      * )
      */
-    public function delete(Request $request, StopRepository $repository, Stop $stop): Response
+    public function delete(Request $request, Stop $stop, StopRepository $repository): Response
     {
         //$stop = $repository->find($id);
         $form = $this->createForm(StopType::class, $stop, ['method' => 'DELETE']);
@@ -134,6 +129,43 @@ class StopController extends AbstractController
 
         return $this->render(
             'stop/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'stop' => $stop,
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param Stop $stop
+     * @param StopRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/edit",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="stop_edit",
+     * )
+     */
+    public function edit(Request $request, Stop $stop, StopRepository $repository): Response
+    {
+        $form = $this->createForm(StopType::class, $stop, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($stop);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('stop_index');
+        }
+
+        return $this->render(
+            'stop/edit.html.twig',
             [
                 'form' => $form->createView(),
                 'stop' => $stop,

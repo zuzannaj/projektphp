@@ -13,22 +13,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class StopType.
- *
  */
 class StopType extends AbstractType
 {
     /**
-     * Builds the form.
-     *
-     * This method is called for each type in the hierarchy starting from the
-     * top most type. Type extensions can further modify the form.
-     *
      * @see FormTypeExtensionInterface::buildForm()
      *
-     * @param FormBuilderInterface $builder The form builder
-     * @param array                $options The options
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
             'city',
@@ -39,7 +33,6 @@ class StopType extends AbstractType
                 'attr' => ['max_length' => 255],
             ]
         );
-
         $builder->add(
             'name',
             TextType::class,
@@ -54,11 +47,9 @@ class StopType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => Stop::class,
-        ]);
+        $resolver->setDefaults(['data_class' => Stop::class]);
     }
 
     /**
@@ -74,4 +65,3 @@ class StopType extends AbstractType
         return 'stop';
     }
 }
-
