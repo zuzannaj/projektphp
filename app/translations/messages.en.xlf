@@ -247,6 +247,10 @@
                 <source>text.search_for</source>
                 <target>Search for connection</target>
             </trans-unit>
+            <trans-unit id="action.select">
+                <source>action.select</source>
+                <target>Select</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

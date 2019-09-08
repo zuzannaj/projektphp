@@ -1,11 +1,11 @@
-.searchlink a, .stops_btn a, .lines_btn a, .routes_btn a, .users_btn a {
+.searchlink a, .stops_btn a, .lines_btn a, .routes_btn a, .users_btn a, .tickets_btn a {
     color: #525252;
     text-decoration: none;
 }
 
-.searchlink, .stops_btn, .lines_btn, .routes_btn, .users_btn {
+.searchlink, .stops_btn, .lines_btn, .routes_btn, .users_btn, .tickets_btn {
     text-align: center;
-    font-size: xx-large;
+    font-size: medium;
     border-width: thin;
     border-color: lightblue;
     border-style: solid;
@@ -29,21 +29,30 @@
     grid-area: users;
 }
 
+.tickets_btn {
+    grid-area: tickets;
+}
+
 .searchlink {
     grid-area: searchlink;
 }
 
-.searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover, .users_btn:hover {
+.searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover, .users_btn:hover, .tickets_btn:hover {
     background-color: hotpink;
+}
+
+.firststop {
+    grid-area: firststop;
 }
 
 .container {
     min-height: 100%;
     display: grid;
     grid-template-columns:30% 40% 30%;
-    grid-template-rows:20% 60% 20%;
+    grid-template-rows:20% 20% 40% 20%;
     grid-template-areas:
             ". . ."
+            ". firststop ."
             ". searchlink ."
             ". . .";
 }
@@ -52,12 +61,21 @@
     min-height: 100%;
     display: grid;
     grid-template-columns:30% 40% 30%;
-    grid-template-rows:20% 15% 15% 15% 15% 20%;
+    grid-template-rows:20% 12% 12% 12% 12% 12% 20%;
     grid-template-areas:
             ". . ."
             ". stops ."
             ". lines ."
             ". routes ."
             ". users ."
+            ". tickets ."
             ". . .";
+}
+
+button a {
+    color: white;
+}
+
+button {
+    margin-top: 10px;
 }

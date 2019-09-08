@@ -5,6 +5,9 @@
 {% endblock %}
 {% block body %}
     <h1>{{ 'title.buslines'|trans }}</h1>
+    <a href="{{ url('busline_new') }}" title="{{ 'action.new'|trans }}">
+        {{ 'action.new'|trans }}
+    </a>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -18,7 +21,6 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.number'|trans, 'bl.number') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
-                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -29,11 +31,6 @@
                     <td>
                         <a href="{{ url('busline_view', {id: busline.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ url('busline_new', {id: busline.id}) }}" title="{{ 'action.new'|trans }}">
-                            {{ 'action.new'|trans }}
                         </a>
                     </td>
                     <td>

@@ -6,6 +6,9 @@
 
 {% block body %}
     <h1>{{ 'title.stop_list'|trans }}</h1>
+    <a href="{{ url('stop_new') }}" title="{{ 'action.new'|trans }}">
+        {{ 'action.new'|trans }}
+    </a>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -18,7 +21,6 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 's.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.city'|trans, 's.city') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.name'|trans, 's.name') }}</th>
-                <th>{{ 'label.actions'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
@@ -36,11 +38,6 @@
                         </a>
                     </td>
                     <td>
-                        <a href="{{ url('stop_new', {id: stop.id}) }}" title="{{ 'action.new'|trans }}">
-                            {{ 'action.new'|trans }}
-                        </a>
-                    </td>
-                    <td>
                         <a href="{{ url('stop_delete', {id: stop.id}) }}" title="{{ 'action.delete'|trans }}">
                             {{ 'action.delete'|trans }}
                         </a>
@@ -51,10 +48,10 @@
                         </a>
                     </td>
                 </tr>
+
             {% endfor %}
             </tbody>
         </table>
-
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>

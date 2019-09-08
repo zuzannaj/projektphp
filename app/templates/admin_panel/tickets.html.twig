@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.bus_route_list'|trans }}
+    {{ 'title.user_list'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.bus_route_list'|trans }}</h1>
-    <a href="{{ url('route_new') }}" title="{{ 'action.new'|trans }}">
-        {{ 'action.new'|trans }}</a>
+    <h1>{{ 'title.user_list'|trans }}</h1>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -17,22 +15,22 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'br.id') }}</th>
-                <th>{{ 'label.bus_line'|trans }}</th>
-                <th>{{ 'label.stop'|trans }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.order'|trans, 'br.stop_order') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'u.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'u.email') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.users'|trans, 'u.firstName') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.bus_line'|trans, 'u.firstName') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for busroute in pagination %}
+            {% for ticket in pagination %}
                 <tr>
-                    <td>{{ busroute.id }}</td>
-                    <td>{{ busroute.busline.number }}</td>
-                    <td>{{ busroute.stop.name }}</td>
-                    <td>{{ busroute.stop_order }}</td>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.createdAt|date('Y/m/d') }}</td>
+                    <td>{{ ticket.user.firstName }}</td>
+                    <td>{{ ticket.busLine }}</td>
                     <td>
-                        <a href="{{ url('route_view', {id: busroute.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a href="{{ url('admin_panelticket_view', {id: ticket.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
                     </td>
@@ -52,4 +50,3 @@
     {% endif %}
 
 {% endblock %}
-

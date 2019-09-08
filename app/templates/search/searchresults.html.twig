@@ -17,7 +17,7 @@
             <tr>
                 <th>{{ 'label.stop'|trans }}</th>
                 <th>{{ 'label.bus_line'|trans }}</th>
-                <th>{{ 'action.new'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -26,8 +26,8 @@
                     <td>{{ busroute.name }}</td>
                     <td>{{ busroute.number }}</td>
                     <td>
-                        <a href="{{ url('searchsearchresults_line', {number: busroute.number}) }}" title="{{ 'action.new'|trans }}">
-                            {{ 'action.new'|trans }}
+                        <a href="{{ url('searchsearchresults_line', {number: busroute.number}) }}" title="{{ 'action.select'|trans }}">
+                            {{ 'action.select'|trans }}
                         </a>
                     </td>
                 </tr>

@@ -14,7 +14,6 @@ use App\Repository\TicketRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,8 +49,7 @@ class SearchController extends Controller
 
         return $this->render('search/searchbar.html.twig', [
             'form' => $form->createView(),
-            ]
-        );
+        ]);
     }
 
     /**

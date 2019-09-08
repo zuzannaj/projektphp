@@ -243,6 +243,10 @@
                 <source>text.search_for</source>
                 <target>Wyszukaj połączenie</target>
             </trans-unit>
+            <trans-unit id="action.select">
+                <source>action.select</source>
+                <target>Wybierz</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

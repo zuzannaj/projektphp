@@ -20,6 +20,7 @@
                 {% if app.user %}
                 {# <a class="nav-link" href="{{ url("article_new") }}">{{ 'navbar.new_article'|trans }}</a> #}
                 <li><a href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ app.user.getFirstName() }}</a></li>
+                    <li><a href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ 'action.mytickets'|trans }}</a></li>
                     <li><a href="{{ url("security_logout") }}">{{ 'button.logout'|trans }}</a></li>
                 {% else %}
                 <li><a href="{{ url('security_login') }}">Zaloguj</a></li>

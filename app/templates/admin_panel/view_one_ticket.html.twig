@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.view_item'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.view_item'|trans }}</h1>
+    {% if item is defined and item|length %}
+        <dl>
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ item.createdAt|date('Y/m/d') }}</dd>
+            <dt>{{ 'label.bus_line'|trans }}</dt>
+            <dd>{{ item.busLine }}</dd>
+            <dt>{{ 'label.users'|trans }}</dt>
+            <dd>{{ item.user.firstName }}</dd>
+            <dt>{{ 'label.email'|trans }}</dt>
+            <dd>{{ item.user.email }}</dd>
+            <dt>{{ 'label.firststop'|trans }}</dt>
+            <dd>{{ item.first_stop }}</dd>
+            <dt>{{ 'label.laststop'|trans }}</dt>
+            <dd>{{ item.last_stop }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.item_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
