@@ -23,9 +23,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class BusLineController extends AbstractController
 {
     /**
-     * @param Request $request
-     * @param BusLineRepository $repository
+     * @param Request            $request
+     * @param BusLineRepository  $repository
      * @param PaginatorInterface $paginator
+     *
      * @return Response
      *
      * @Route(
@@ -49,7 +50,8 @@ class BusLineController extends AbstractController
 
     /**
      * @param BusLineRepository $repository
-     * @param int $id
+     * @param int               $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response Http response
      *
      * @Route("/{id}", name="busline_view", requirements={"id": "[1-9]\d*"})
@@ -98,18 +100,16 @@ class BusLineController extends AbstractController
     }
 
     /**
-     * Delete action.
+     * @param Request           $request
+     * @param BusLine           $busLine
+     * @param BusLineRepository $repository
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param BusLine
-     * @param \App\Repository\BusLineRepository    $repository BusLine repository
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
-     * @Route(
+     *  @Route(
      *     "/{id}/delete",
      *     methods={"GET", "DELETE"},
      *     requirements={"id": "[1-9]\d*"},
@@ -142,10 +142,12 @@ class BusLineController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param BusLine $busLine
+     * @param Request           $request
+     * @param BusLine           $busLine
      * @param BusLineRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *

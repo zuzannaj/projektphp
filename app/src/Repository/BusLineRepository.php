@@ -79,6 +79,7 @@ class BusLineRepository extends ServiceEntityRepository
 
     /**
      * @param string $line
+     *
      * @return BusLine|null
      */
     public function findOneByNumber(string $line)
@@ -87,9 +88,11 @@ class BusLineRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return BusLine[] Returns an array of BusLine objects
-    */
-    public function findByExampleField($value)
+     * @param string $value
+     *
+     * @return mixed
+     */
+    public function findByExampleField(string $value)
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')
@@ -102,11 +105,13 @@ class BusLineRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param string $value
+     *
      * @return BusLine|null
+     *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findOneBySomeField($value): BusLine
+    public function findOneBySomeField(string $value): BusLine
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

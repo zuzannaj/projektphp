@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use App\Entity\Ticket;
 use App\Entity\User;
-use App\Form\TicketType;
 use App\Repository\TicketRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -26,6 +25,7 @@ class AdminPanelController extends Controller
      * Index Admin Panel.
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/", name="admin_panel_index")
      */
     public function index()
@@ -39,6 +39,7 @@ class AdminPanelController extends Controller
      * @param PaginationInterface $paginator
      * @param Request $request
      * @param UserRepository $repository
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/users", name="user_index")
@@ -50,6 +51,7 @@ class AdminPanelController extends Controller
             $request->query->getInt('page', 1),
             User::NUMBER_OF_ITEMS
         );
+
         return $this->render('admin_panel/users.html.twig', [
             'pagination' => $pagination,
         ]);
@@ -59,6 +61,7 @@ class AdminPanelController extends Controller
      * @param PaginatorInterface $paginator
      * @param Request $request
      * @param TicketRepository $repository
+     *
      * @return Response
      *
      * @Route("/tickets", name="ticket_index")
@@ -70,6 +73,7 @@ class AdminPanelController extends Controller
             $request->query->getInt('page', 1),
             Ticket::NUMBER_OF_ITEMS
         );
+
         return $this->render('admin_panel/tickets.html.twig', [
             'pagination' => $pagination,
         ]);
@@ -78,6 +82,7 @@ class AdminPanelController extends Controller
     /**
      * @param TicketRepository $repository
      * @param int $id
+     *
      * @return Response
      *
      * @Route("/tickets/{id}", name="ticket_view")
@@ -94,7 +99,9 @@ class AdminPanelController extends Controller
      * @param Request $request
      * @param Ticket $ticket
      * @param TicketRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -128,6 +135,22 @@ class AdminPanelController extends Controller
                 'form' => $form->createView(),
                 'ticket' => $ticket,
             ]
+        );
+    }
+
+    /**
+     * @param UserRepository $repository
+     * @param int            $id
+     *
+     * @return Response
+     *
+     * @Route("/users/{id}", name="user_view")
+     */
+    public function viewOneUser(UserRepository $repository, int $id): Response
+    {
+        return $this->render(
+            'admin_panel/view_one_user.html.twig',
+            ['item' => $repository->find($id)]
         );
     }
 }

@@ -23,9 +23,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class StopController extends AbstractController
 {
     /**
-     * @param StopRepository $repository
+     * @param StopRepository     $repository
      * @param PaginatorInterface $paginator
-     * @param Request $request
+     * @param Request            $request
+     *
      * @return Response
      *
      * @Route(
@@ -49,7 +50,8 @@ class StopController extends AbstractController
 
     /**
      * @param StopRepository $repository
-     * @param int $id
+     * @param int            $id
+     *
      * @return Response
      *
      * @Route("/{id}", name="stop_view", requirements={"id": "[1-9]\d*"})
@@ -63,9 +65,11 @@ class StopController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param Request        $request
      * @param StopRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -94,10 +98,12 @@ class StopController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param Stop $stop
+     * @param Request        $request
+     * @param Stop           $stop
      * @param StopRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -136,10 +142,12 @@ class StopController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param Stop $stop
+     * @param Request        $request
+     * @param Stop           $stop
      * @param StopRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *

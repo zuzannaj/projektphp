@@ -6,7 +6,8 @@
 
 {% block body %}
     <h1>{{ 'title.bus_route_list'|trans }}</h1>
-    <h2>Line {{ line }}</h2>
+    <h2>Linia {{ line }}</h2>
+    <h3>Wybierz przystanek końcowy</h3>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -24,7 +25,7 @@
             <tbody>
             {% for stop in pagination %}
                 <tr>
-                    <td>{{ stop.stop_order }}</td>
+                    <td>{{ stop.stopOrder }}</td>
                     <td>{{ stop.name }}</td>
                     <td>
                         <a href="{{ url('searchticket_buy') }}" title="{{ 'action.buy'|trans }}">

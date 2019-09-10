@@ -101,6 +101,11 @@
       <path value="$PROJECT_DIR$/app/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/app/vendor/gedmo/doctrine-extensions" />
       <path value="$PROJECT_DIR$/app/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/app/vendor/jms/parser-lib" />
+      <path value="$PROJECT_DIR$/app/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/app/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/app/vendor/phpcollection/phpcollection" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

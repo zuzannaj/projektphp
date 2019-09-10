@@ -30,6 +30,9 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/gedmo/doctrine-extensions" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/jms/metadata" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/jms/parser-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/jms/serializer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/knplabs/knp-components" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/knplabs/knp-paginator-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/nikic/php-parser" />
@@ -37,7 +40,9 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/ocramius/proxy-manager" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/pdepend/pdepend" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/php-cs-fixer/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phpcollection/phpcollection" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/phpmd/phpmd" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phpoption/phpoption" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/log" />

@@ -46,7 +46,7 @@ class Ticket
      *     max = "255",
      * )
      */
-    public $first_stop;
+    public $firstStop;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,7 +56,7 @@ class Ticket
      *     max = "255",
      * )
      */
-    public $last_stop;
+    public $lastStop;
 
     /**
      * Ticket constructor.
@@ -84,6 +84,7 @@ class Ticket
 
     /**
      * @param \DateTimeInterface $createdAt
+     *
      * @return Ticket
      */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
@@ -103,6 +104,7 @@ class Ticket
 
     /**
      * @param User|null $user
+     *
      * @return Ticket
      */
     public function setUser(User $user): self
@@ -121,7 +123,8 @@ class Ticket
     }
 
     /**
-     * @param BusLine|null $bus_line
+     * @param BusLine|null $busLine
+     *
      * @return Ticket
      */
     public function setBusLine(BusLine $busLine): self
@@ -136,16 +139,17 @@ class Ticket
      */
     public function getFirstStop(): ?string
     {
-        return $this->first_stop;
+        return $this->firstStop;
     }
 
     /**
-     * @param string $first_stop
+     * @param string $firstStop
+     *
      * @return Ticket
      */
-    public function setFirstStop(string $first_stop): self
+    public function setFirstStop(string $firstStop): self
     {
-        $this->first_stop = $first_stop;
+        $this->firstStop = $firstStop;
 
         return $this;
     }
@@ -155,16 +159,17 @@ class Ticket
      */
     public function getLastStop(): ?string
     {
-        return $this->last_stop;
+        return $this->lastStop;
     }
 
     /**
-     * @param string $last_stop
+     * @param string $lastStop
+     *
      * @return Ticket
      */
-    public function setLastStop(string $last_stop): self
+    public function setLastStop(string $lastStop): self
     {
-        $this->last_stop = $last_stop;
+        $this->lastStop = $lastStop;
 
         return $this;
     }

@@ -29,16 +29,16 @@ class BusRoute
      *     max="3",
      * )
      */
-    public $stop_order;
+    public $stopOrder;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\BusLine")
      * @ORM\JoinColumn(nullable=false)
      */
-    public $bus_line;
+    public $busLine;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Stop")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Stop", cascade={"remove"}))
      * @ORM\JoinColumn(nullable=false)
      */
     public $stop;
@@ -56,16 +56,17 @@ class BusRoute
      */
     public function getStopOrder(): ?int
     {
-        return $this->stop_order;
+        return $this->stopOrder;
     }
 
     /**
-     * @param int $stop_order
+     * @param int $stopOrder
+     *
      * @return BusRoute
      */
-    public function setStopOrder(int $stop_order): self
+    public function setStopOrder(int $stopOrder): self
     {
-        $this->stop_order = $stop_order;
+        $this->stopOrder = $stopOrder;
 
         return $this;
     }
@@ -75,16 +76,17 @@ class BusRoute
      */
     public function getBusLine(): ?BusLine
     {
-        return $this->bus_line;
+        return $this->busLine;
     }
 
     /**
-     * @param BusLine|null $bus_line
+     * @param BusLine|null $busLine
+     *
      * @return BusRoute
      */
-    public function setBusLine(?BusLine $bus_line): self
+    public function setBusLine(?BusLine $busLine): self
     {
-        $this->bus_line = $bus_line;
+        $this->busLine = $busLine;
 
         return $this;
     }
@@ -99,6 +101,7 @@ class BusRoute
 
     /**
      * @param Stop|null $stop
+     *
      * @return BusRoute
      */
     public function setStop(?Stop $stop): self

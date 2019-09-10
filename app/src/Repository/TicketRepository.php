@@ -51,6 +51,7 @@ class TicketRepository extends ServiceEntityRepository
 
     /**
      * @param int $id
+     *
      * @return array|null
      */
     public function findById(int $id): ?array
@@ -89,6 +90,7 @@ class TicketRepository extends ServiceEntityRepository
 
     /**
      * @param string $name
+     *
      * @return Ticket|null
      */
     public function findOneByName(string $name)
@@ -97,10 +99,11 @@ class TicketRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param string $value
+     *
      * @return mixed
      */
-    public function findByExampleField($value)
+    public function findByExampleField(string $value)
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
@@ -112,11 +115,13 @@ class TicketRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param string $value
+     *
      * @return Ticket|null
+     *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findOneBySomeField($value): Ticket
+    public function findOneBySomeField(string $value): Ticket
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

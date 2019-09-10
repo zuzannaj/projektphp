@@ -5,20 +5,11 @@
 
 namespace App\Form;
 
-use App\Entity\BusLine;
 use App\Entity\BusRoute;
-use App\Entity\Stop;
 use App\Entity\Ticket;
-use App\Entity\User;
 use App\Repository\BusRouteRepository;
-use App\Repository\StopRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -52,8 +43,8 @@ class BuyTicketType extends AbstractType
                         ->leftJoin('br.bus_line', 'bl')
                         ->where('bl.number = ?1')
                         ->setParameter(1, 'numberr'); } */
-                'query_builder' => function (BusRouteRepository  $r) {
-                    return $r->showLine('124');
+                'query_builder' => function (BusRouteRepository  $r) use ($options) {
+                    return $r->showLine($options['stop']);
                 },
             ]
         );
@@ -66,6 +57,7 @@ class BuyTicketType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Ticket::class,
+            'stop' => 1,
         ]);
     }
 

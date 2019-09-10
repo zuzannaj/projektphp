@@ -50,7 +50,8 @@ class BusRouteController extends AbstractController
 
     /**
      * @param BusRouteRepository $repository
-     * @param int $id
+     * @param int                $id
+     *
      * @return Response
      *
      * @Route("/{id}", name="route_view", requirements={"id": "[1-9]\d*"})
@@ -64,9 +65,11 @@ class BusRouteController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param Request            $request
      * @param BusRouteRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -95,10 +98,12 @@ class BusRouteController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param BusRoute $busRoute
+     * @param Request            $request
+     * @param BusRoute           $busRoute
      * @param BusRouteRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
@@ -135,10 +140,12 @@ class BusRouteController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param BusRoute $busRoute
+     * @param Request            $request
+     * @param BusRoute           $busRoute
      * @param BusRouteRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *

@@ -17,6 +17,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BusRouteRepository extends ServiceEntityRepository
 {
+    /**
+     * BusRouteRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BusRoute::class);
@@ -44,16 +49,6 @@ class BusRouteRepository extends ServiceEntityRepository
     public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?: $this->createQueryBuilder('br');
-    }
-
-    /**
-     * @param int $id
-     * @return array|null
-     */
-    public function findById(int $id): ?array
-    {
-        return isset($this->data[$id]) && count($this->data)
-            ? $this->data[$id] : null;
     }
 
     /**
@@ -85,53 +80,40 @@ class BusRouteRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param string $value
+     *
      * @return mixed
      */
-    public function search($value)
+    public function search(string $value)
     {
-        $qb = $this->getOrCreateQueryBuilder();
+        $queryb = $this->getOrCreateQueryBuilder();
 
-        return $qb->leftJoin('br.stop', 's')
-            ->leftJoin('br.bus_line', 'bl')
+        return $queryb->leftJoin('br.stop', 's')
+            ->leftJoin('br.busLine', 'bl')
             ->addSelect('s.name')
             ->addSelect('bl.number')
-            ->where($qb->expr()->like('s.name', ':value'))
+            ->where($queryb->expr()->like('s.name', ':value'))
             ->setParameter('value', '%'.$value.'%')
             ->getQuery()
             ->getResult();
     }
 
     /**
-     * @param $value
+     * @param string $value
      *
      * @return QueryBuilder
      */
-    public function showLine($value)
+    public function showLine(string $value)
     {
         return $this->createQueryBuilder('br')
             ->leftJoin('br.stop', 's')
-            ->leftJoin('br.bus_line', 'bl')
+            ->leftJoin('br.busLine', 'bl')
             //->addSelect('bl.number')
             //->addSelect('br.stop_order')
             ->where('bl.number = :value')
             ->setParameter('value', $value)
-            ->orderBy('br.stop_order', 'ASC');
+            ->orderBy('br.stopOrder', 'ASC');
         //->getQuery()
             //->getResult();
-    }
-
-    /**
-     * @param $value
-     * @return BusRoute|null
-     * @throws
-     */
-    public function findOneBySomeField($value): ?BusRoute
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.stop_order = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult();
     }
 }

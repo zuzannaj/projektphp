@@ -38,7 +38,7 @@ class StopRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('s.id', 'ASC');
+            ->orderBy('s.id', 'DESC');
     }
 
     /**
@@ -83,54 +83,11 @@ class StopRepository extends ServiceEntityRepository
 
     /**
      * @param string $name
+     *
      * @return Stop|null
      */
     public function findOneByName(string $name)
     {
         return $this->findOneBy(['name' => $name]);
     }
-    // /**
-    //  * @return Stop[] Returns an array of Stop objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Stop
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    /**
-     * @param int $id
-     * @return array|null
-     */
-    /*
-    public function findById(int $id): array
-    {
-        return isset($this->data[$id]) && count($this->data)
-            ? $this->data[$id] : null;
-    }
-    /**
-     * @return array
-     */
-    /*public function findAll(): array
-    {
-        return $this->data;
-    }*/
 }

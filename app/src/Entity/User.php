@@ -318,6 +318,7 @@ class User implements UserInterface
 
     /**
      * User constructor.
+     *
      * @throws \Exception
      */
     public function __construct()
@@ -337,6 +338,7 @@ class User implements UserInterface
 
     /**
      * @param Ticket $ticket
+     *
      * @return User
      */
     public function addTicket(Ticket $ticket): self
@@ -351,6 +353,7 @@ class User implements UserInterface
 
     /**
      * @param Ticket $ticket
+     *
      * @return User
      */
     public function removeTicket(Ticket $ticket): self

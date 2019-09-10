@@ -28,7 +28,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.firstName }}</td>
                     <td>
-                        <a href="{{ url('admin_paneluser_index', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a href="{{ url('admin_paneluser_view', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
                     </td>

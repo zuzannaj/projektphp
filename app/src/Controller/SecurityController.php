@@ -68,10 +68,13 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     * @param UserRepository $repository
+     * @param Request                      $request
+     * @param UserRepository               $repository
      * @param UserPasswordEncoderInterface $encoder
+     *
      * @return Response
+     *
+     * @throws
      *
      * @Route(
      *     "/register",

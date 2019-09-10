@@ -247,6 +247,39 @@
                 <source>action.select</source>
                 <target>Wybierz</target>
             </trans-unit>
+            <trans-unit id="title.stop_edit">
+                                                    <source>title.stop_edit</source>
+                                                    <target>Edytuj przystanek</target>
+                                                </trans-unit>
+                                                <trans-unit id="title.route_edit">
+                                                    <source>title.route_edit</source>
+                                                    <target>Edytuj trasę</target>
+                                                </trans-unit>
+                                                <trans-unit id="title.busroute_edit">
+                                                    <source>title.busroute_edit</source>
+                                                    <target>Edytuj trasę</target>
+                                                </trans-unit>
+                                                <trans-unit id="title.select_line">
+                                                    <source>title.select_line</source>
+                                                    <target>Wybierz linię</target>
+                                                </trans-unit>
+                                                <trans-unit id="title.busline_edit">
+                                                                            <source>title.busline_edit</source>
+                                                                            <target>Edytuj linię</target>
+                                                                        </trans-unit>
+                                                                        <trans-unit id="action.mytickets">
+                                                                            <source>action.mytickets</source>
+                                                                            <target>Moje bilety</target>
+                                                                        </trans-unit>
+
+                                                                        <trans-unit id="message.deleted_successfully">
+                                                                            <source>message.deleted_successfully</source>
+                                                                            <target>Usunięto</target>
+                                                                        </trans-unit>
+                                                                        <trans-unit id="message.updated_successfully">
+                                                                                                                                        <source>message.updated_successfully</source>
+                                                                                                                                        <target>Zaktualizowano</target>
+                                                                                                                                    </trans-unit>
         </body>
     </file>
 </xliff>

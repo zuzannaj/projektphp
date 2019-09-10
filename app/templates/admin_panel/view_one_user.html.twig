@@ -10,16 +10,12 @@
         <dl>
             <dt>{{ 'label.created_at'|trans }}</dt>
             <dd>{{ item.createdAt|date('Y/m/d') }}</dd>
-            <dt>{{ 'label.bus_line'|trans }}</dt>
-            <dd>{{ item.busLine }}</dd>
-            <dt>{{ 'label.users'|trans }}</dt>
-            <dd>{{ item.user.firstName }}</dd>
+            <dt>{{ 'label.updated_at'|trans }}</dt>
+            <dd>{{ item.updatedAt|date('Y/m/d') }}</dd>
+            <dt>{{ 'label.firstName'|trans }}</dt>
+            <dd>{{ item.firstName }}</dd>
             <dt>{{ 'label.email'|trans }}</dt>
-            <dd>{{ item.user.email }}</dd>
-            <dt>{{ 'label.firststop'|trans }}</dt>
-            <dd>{{ item.firstStop }}</dd>
-            <dt>{{ 'label.laststop'|trans }}</dt>
-            <dd>{{ item.lastStop }}</dd>
+            <dd>{{ item.email }}</dd>
         </dl>
     {% else %}
         <p>

@@ -20,6 +20,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.firststop'|trans, 't.first_stop') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.laststop'|trans, 't.last_stop') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -28,11 +29,16 @@
                 <tr>
                     <td>{{ ticket.createdAt|date('Y/m/d') }}</td>
                     <td>{{ ticket.busLine }}</td>
-                    <td>{{ ticket.first_stop }}</td>
-                    <td>{{ ticket.last_stop }}</td>
+                    <td>{{ ticket.firstStop }}</td>
+                    <td>{{ ticket.lastStop }}</td>
                     <td>
                         <a href="{{ url('searchticket_view_one', {id: ticket.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('searchticket_delete_one', {id: ticket.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
                         </a>
                     </td>
                 </tr>
