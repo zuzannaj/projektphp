@@ -6,12 +6,15 @@ namespace App\Controller;
 
 use App\Entity\BusLine;
 use App\Entity\BusRoute;
+use App\Entity\Stop;
 use App\Entity\Ticket;
+use App\Form\BuyTicketType;
 use App\Form\TicketType;
 use App\Repository\BusLineRepository;
 use App\Repository\BusRouteRepository;
 use App\Repository\TicketRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -39,10 +42,13 @@ class SearchController extends Controller
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('searchsearchresults'))
-            ->add('query', TextType::class)
+            ->add('query', TextType::class, [
+        'attr' => [
+            'class' => 'searchlink',
+        ],])
             ->add('search', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-primary',
+                    'class' => 'buttonstyle',
                 ],
             ])
             ->getForm();
@@ -64,13 +70,11 @@ class SearchController extends Controller
     {
         $query = $request->request->get('form')['query'];
 
-        if ($query) {
-            $pagination = $paginator->paginate(
+        $pagination = $paginator->paginate(
                 $repository->search($query),
                 $request->query->getInt('page', 1),
                 BusRoute::NUMBER_OF_ITEMS
             );
-        }
 
         return $this->render('search/searchresults.html.twig', [
             'pagination' => $pagination,
@@ -78,6 +82,46 @@ class SearchController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param TicketRepository $repository
+     * @param string $name
+     * @param Stop $stop
+     * @param int $number
+     * @param BusLine $busLine
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @ParamConverter("stop", class="App\Entity\Stop")
+     * @ParamConverter("busLine", class="App\Entity\BusLine")
+     *
+     * @Route("/searchresults/{name}/{number}/buy", methods={"GET", "POST", "PUT"}, name="ticket_buy")
+     */
+    public function buyTicket(Request $request, TicketRepository $repository, string $name, Stop $stop, int $number, BusLine $busLine): Response
+    {
+        $ticket = new Ticket();
+        $form = $this->createForm(BuyTicketType::class, $ticket);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ticket->setCreatedAt(new \DateTime());
+            $ticket->setBusLine($busLine);
+            $ticket->setUser($this->getUser());
+            $ticket->setFirstStop($stop);
+            //$ticket->setLastStop($stop);
+            $repository->save($ticket);
+
+            return $this->redirectToRoute('searchticket_view');
+        }
+
+        return $this->render(
+            'ticket/buy.html.twig',
+            ['form' => $form->createView(),
+                'number' => $number,
+                'firstStop' => $name,
+            ]
+        );
+    }
+    /*/**
      * @param PaginatorInterface $paginator
      * @param BusRouteRepository $repository
      * @param Request $request
@@ -85,7 +129,7 @@ class SearchController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/searchresults/line/{number}", name="searchresults_line")
-     */
+     *//*
     public function showStops(PaginatorInterface $paginator, BusRouteRepository $repository, Request $request, int $number)
     {
         $pagination = $paginator->paginate(
@@ -113,6 +157,7 @@ class SearchController extends Controller
      *     name="ticket_buy",
      * )
      */
+    /*
     public function new(Request $request, TicketRepository $repository): Response
     {
         $ticket = new Ticket();
@@ -133,7 +178,7 @@ class SearchController extends Controller
             ]
         );
     }
-
+*/
     /**
      * @param PaginatorInterface $paginator
      * @param TicketRepository $repository
@@ -170,21 +215,21 @@ class SearchController extends Controller
             ['item' => $repository->find($id)]
         );
     }
-/*
-    /**
-     * @param Request $request
-     * @param TicketRepository $repository
-     * @param BusLine $busLine
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     *
-     * @Route(
-     *     "/buy",
-     *     methods={"GET", "POST"},
-     *     name="ticket_buy",
-     * )
-     */
+    /*
+        /**
+         * @param Request $request
+         * @param TicketRepository $repository
+         * @param BusLine $busLine
+         * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+         * @throws \Doctrine\ORM\ORMException
+         * @throws \Doctrine\ORM\OptimisticLockException
+         *
+         * @Route(
+         *     "/buy",
+         *     methods={"GET", "POST"},
+         *     name="ticket_buy",
+         * )
+         */
 /*
     public function buyTicket(Request $request, TicketRepository $repository, BusLine $busLine)
     {

@@ -10,6 +10,7 @@ use App\Form\BusRouteType;
 use App\Repository\BusRouteRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -90,6 +91,83 @@ class BusRouteController extends AbstractController
         return $this->render(
             'bus_route/new.html.twig',
             ['form' => $form->createView()]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param BusRoute $busRoute
+     * @param BusRouteRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/delete",
+     *     methods={"GET", "DELETE"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="route_delete",
+     * )
+     */
+    public function delete(Request $request, BusRoute $busRoute, BusRouteRepository $repository): Response
+    {
+        $form = $this->createForm(FormType::class, $busRoute, ['method' => 'DELETE']);
+        $form->handleRequest($request);
+
+        if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
+            $form->submit($request->request->get($form->getName()));
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->delete($busRoute);
+            $this->addFlash('success', 'message.deleted_successfully');
+
+            return $this->redirectToRoute('route_index');
+        }
+
+        return $this->render(
+            'bus_route/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'busRoute' => $busRoute,
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param BusRoute $busRoute
+     * @param BusRouteRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/edit",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="route_edit",
+     * )
+     */
+    public function edit(Request $request, BusRoute $busRoute, BusRouteRepository $repository): Response
+    {
+        $form = $this->createForm(BusRouteType::class, $busRoute, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($busRoute);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('route_index');
+        }
+
+        return $this->render(
+            'bus_route/edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'busRoute' => $busRoute,
+            ]
         );
     }
 

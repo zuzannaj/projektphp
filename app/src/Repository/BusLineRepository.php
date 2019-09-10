@@ -48,26 +48,6 @@ class BusLineRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?: $this->createQueryBuilder('bl');
     }
-/*
-    /**
-     * @return array
-     */
-/*
-    public function findAll(): array
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return array|null
-     */
-/*
-    public function findById(int $id): ?array
-    {
-        return isset($this->data[$id]) && count($this->data)
-            ? $this->data[$id] : null;
-    }*/
 
     /**
      * Save record.
@@ -86,15 +66,15 @@ class BusLineRepository extends ServiceEntityRepository
     /**
      * Delete record.
      *
-     * @param \App\Entity\BusLine $busline BusLine entity
+     * @param \App\Entity\BusLine $busLine BusLine entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(BusLine $busline)
+    public function delete(BusLine $busLine)
     {
-        $this->_em->remove($busline);
-        $this->_em->flush($busline);
+        $this->_em->remove($busLine);
+        $this->_em->flush($busLine);
     }
 
     /**

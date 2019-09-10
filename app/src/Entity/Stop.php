@@ -42,7 +42,7 @@ class Stop
      *     max="60",
      * )
      */
-    private $city;
+    public $city;
 
     /**
      * Name.
@@ -57,7 +57,7 @@ class Stop
      *     max="100",
      * )
      */
-    private $name;
+    public $name;
 
     /**
      * Getter for Id.
@@ -81,6 +81,7 @@ class Stop
 
     /**
      * @param string $city
+     *
      * @return Stop
      */
     public function setCity(string $city): self

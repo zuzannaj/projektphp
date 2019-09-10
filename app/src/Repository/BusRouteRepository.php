@@ -1,9 +1,10 @@
 <?php
-
+/**
+ * Bus route Repository.
+ */
 namespace App\Repository;
 
 use App\Entity\BusRoute;
-use App\Repository\StopRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -46,14 +47,6 @@ class BusRouteRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array
-     */
-    /*public function findAll(): array
-    {
-        return $this->data;
-    }
-
-    /**
      * @param int $id
      * @return array|null
      */
@@ -66,29 +59,29 @@ class BusRouteRepository extends ServiceEntityRepository
     /**
      * Save record.
      *
-     * @param \App\Entity\BusRoute $busroute BusRoute entity
+     * @param \App\Entity\BusRoute $busRoute BusRoute entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(BusRoute $busroute): void
+    public function save(BusRoute $busRoute): void
     {
-        $this->_em->persist($busroute);
-        $this->_em->flush($busroute);
+        $this->_em->persist($busRoute);
+        $this->_em->flush($busRoute);
     }
 
     /**
      * Delete record.
      *
-     * @param \App\Entity\BusRoute $busroute BusRoute entity
+     * @param \App\Entity\BusRoute $busRoute BusRoute entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(BusRoute $busroute): void
+    public function delete(BusRoute $busRoute): void
     {
-        $this->_em->remove($busroute);
-        $this->_em->flush($busroute);
+        $this->_em->remove($busRoute);
+        $this->_em->flush($busRoute);
     }
 
     /**
@@ -104,98 +97,41 @@ class BusRouteRepository extends ServiceEntityRepository
             ->addSelect('s.name')
             ->addSelect('bl.number')
             ->where($qb->expr()->like('s.name', ':value'))
-            ->setParameter('value','%'.$value.'%')
+            ->setParameter('value', '%'.$value.'%')
             ->getQuery()
             ->getResult();
     }
 
     /**
      * @param $value
-     * @return mixed
+     *
+     * @return QueryBuilder
      */
     public function showLine($value)
     {
-        $qb = $this->getOrCreateQueryBuilder();
-
-        return $qb->leftJoin('br.stop', 's')
+        return $this->createQueryBuilder('br')
+            ->leftJoin('br.stop', 's')
             ->leftJoin('br.bus_line', 'bl')
-            ->addSelect('bl.number')
-            ->addSelect('br.stop_order')
-            ->addSelect('s.name')
-            ->where($qb->expr()->like('bl.number', ':value'))
-            ->orderBy('br.stop_order')
-            ->setParameter('value','%'.$value.'%')
-            ->getQuery()
-            ->getResult();
+            //->addSelect('bl.number')
+            //->addSelect('br.stop_order')
+            ->where('bl.number = :value')
+            ->setParameter('value', $value)
+            ->orderBy('br.stop_order', 'ASC');
+        //->getQuery()
+            //->getResult();
     }
-    /*
-    public function search($value)
-    {
-        $qb = $this->getOrCreateQueryBuilder();
-        return $qb->select('br.id')
-            ->where($qb->expr()->like('br.id', ':value'))
-            ->setParameter('value','%'.$value.'%')
-            ->getQuery()
-            ->getResult();
-    }
-    */
 
-    // /**
-    //  * @return Stop[] Returns an array of Stop objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Stop
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-}
-
-    // /**
-    //  * @return BusRoute[] Returns an array of BusRoute objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
+    /**
+     * @param $value
+     * @return BusRoute|null
+     * @throws
+     */
     public function findOneBySomeField($value): ?BusRoute
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
+            ->andWhere('r.stop_order = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
-
+}

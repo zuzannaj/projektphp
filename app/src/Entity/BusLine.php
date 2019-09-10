@@ -66,7 +66,6 @@ class BusLine
      */
     public function __toString(): string
     {
-        // to show the name of the Category in the select
         return $this->number;
     }
 

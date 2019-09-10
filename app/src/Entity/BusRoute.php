@@ -1,12 +1,14 @@
 <?php
-
+/**
+ * Bus route entity.
+ */
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="BusRouteRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BusRouteRepository")
  * @ORM\Table(name="bus_routes")
  */
 class BusRoute
@@ -33,7 +35,7 @@ class BusRoute
      * @ORM\ManyToOne(targetEntity="App\Entity\BusLine")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $bus_line;
+    public $bus_line;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Stop")
@@ -121,6 +123,6 @@ class BusRoute
     public function __toString(): string
     {
         // to show the name of the Category in the select
-        return $this->id;
+        return $this->stop;
     }
 }

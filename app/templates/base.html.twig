@@ -8,26 +8,31 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="{{ asset('style.css') }}">
         {% endblock %}
+        <style>
+            .navbar-nav li a:hover {
+                color: white;
+            }
+        </style>
     </head>
-    <body style="background-color: #f9ecec">
-    <nav class="navbar navbar-default" style="background-color: lightblue">
+    <body style="background-color: #f9ecec; color: #69647b">
+    <nav class="navbar navbar-default" style="background-color: #b28d8d; border: none;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ url('homepage') }}">{{ 'title.bus_company_name'|trans }}</a>
+                <a class="navbar-brand" style="color: #2f2c3d" href="{{ url('homepage') }}">{{ 'title.bus_company_name'|trans }}</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('homepage') }}">{{ 'title.homepage'|trans }}</a></li>
+                <li><a style="color: #2f2c3d" href="{{ url('homepage') }}">{{ 'title.homepage'|trans }}</a></li>
                 {% if app.user %}
                 {# <a class="nav-link" href="{{ url("article_new") }}">{{ 'navbar.new_article'|trans }}</a> #}
-                <li><a href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ app.user.getFirstName() }}</a></li>
-                    <li><a href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ 'action.mytickets'|trans }}</a></li>
-                    <li><a href="{{ url("security_logout") }}">{{ 'button.logout'|trans }}</a></li>
+                <li><a style="color: #2f2c3d" href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ app.user.getFirstName() }}</a></li>
+                    <li><a style="color: #2f2c3d" href="{{ path("searchticket_view", {id: app.user.getId()}) }}">{{ 'action.mytickets'|trans }}</a></li>
+                    <li><a style="color: #2f2c3d" href="{{ url("security_logout") }}">{{ 'button.logout'|trans }}</a></li>
                 {% else %}
-                <li><a href="{{ url('security_login') }}">Zaloguj</a></li>
-                <li><a href="{{ url('user_add') }}">Zarejestruj</a></li>
+                <li><a style="color: #2f2c3d" href="{{ url('security_login') }}">Zaloguj</a></li>
+                <li><a style="color: #2f2c3d" href="{{ url('user_add') }}">Zarejestruj</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ url('admin_paneladmin_panel_index') }}">{{ 'label.admin_panel'|trans }}</a></li>
+                    <li><a style="color: #2f2c3d" href="{{ url('admin_paneladmin_panel_index') }}">{{ 'label.admin_panel'|trans }}</a></li>
                 {% endif %}
             </ul>
         </div>

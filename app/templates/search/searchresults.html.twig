@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.bus_route_list'|trans }}
+    {{ 'title.select_line'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.bus_route_list'|trans }}</h1>
+    <h1>{{ 'title.select_line'|trans }}</h1>
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -26,7 +26,7 @@
                     <td>{{ busroute.name }}</td>
                     <td>{{ busroute.number }}</td>
                     <td>
-                        <a href="{{ url('searchsearchresults_line', {number: busroute.number}) }}" title="{{ 'action.select'|trans }}">
+                        <a href="{{ url('searchticket_buy', {name: busroute.name, number: busroute.number}) }}" title="{{ 'action.select'|trans }}">
                             {{ 'action.select'|trans }}
                         </a>
                     </td>

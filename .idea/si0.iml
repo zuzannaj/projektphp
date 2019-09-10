@@ -42,6 +42,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/sensio/framework-extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/squizlabs/php_codesniffer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/stof/doctrine-extensions-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/asset" />

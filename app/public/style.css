@@ -1,5 +1,9 @@
+body div{
+    color: #2f2c3d;
+}
+
 .searchlink a, .stops_btn a, .lines_btn a, .routes_btn a, .users_btn a, .tickets_btn a {
-    color: #525252;
+    color: #2f2c3d;
     text-decoration: none;
 }
 
@@ -7,7 +11,7 @@
     text-align: center;
     font-size: medium;
     border-width: thin;
-    border-color: lightblue;
+    border-color: #d3bbbb;
     border-style: solid;
     padding: 20px;
     margin: 5px;
@@ -37,8 +41,16 @@
     grid-area: searchlink;
 }
 
+#searchbar {
+    background-color: #d3bbbb;
+}
+
+#searchbar input:hover {
+    background-color: white;
+}
+
 .searchlink:hover, .stops_btn:hover, .lines_btn:hover, .routes_btn:hover, .users_btn:hover, .tickets_btn:hover {
-    background-color: hotpink;
+    background-color: #d3bbbb;
 }
 
 .firststop {
@@ -76,6 +88,28 @@ button a {
     color: white;
 }
 
-button {
+.buttonstyle {
     margin-top: 10px;
+    background-color: #b28d8d;
+}
+
+.navbar-nav li {
+    color: #2f2c3d;
+}
+
+.navbar-nav li:hover {
+    color: white;
+}
+
+h1, h2 {
+    color: #2f2c3d;
+}
+
+table a, table th, a {
+    color: #b28d8d;
+}
+
+a:hover {
+    color: #2f2c3d;
+    text-decoration: none;
 }

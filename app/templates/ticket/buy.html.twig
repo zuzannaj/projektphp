@@ -2,7 +2,7 @@
     page_title: 'title.ticket_buy',
     attr: {
         method: 'POST',
-        action: url('searchticket_buy')
+        action: url('searchticket_buy', {'name': firstStop, 'number': number})
     },
     back_to_list_path: 'searchticket_view',
 } %}

@@ -21,6 +21,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.number'|trans, 'bl.number') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -36,6 +37,11 @@
                     <td>
                         <a href="{{ url('busline_delete', {id: busline.id}) }}" title="{{ 'action.delete'|trans }}">
                             {{ 'action.delete'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('busline_edit', {id: busline.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
                         </a>
                     </td>
                 </tr>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Bus route type.
+ * Buy ticket type.
  */
 
 namespace App\Form;
@@ -8,17 +8,25 @@ namespace App\Form;
 use App\Entity\BusLine;
 use App\Entity\BusRoute;
 use App\Entity\Stop;
+use App\Entity\Ticket;
+use App\Entity\User;
+use App\Repository\BusRouteRepository;
+use App\Repository\StopRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class StopType.
+ * Class BusTicketType.
  *
  */
-class BusRouteType extends AbstractType
+class BuyTicketType extends AbstractType
 {
     /**
      * Builds the form.
@@ -34,27 +42,19 @@ class BusRouteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'busLine',
+            'lastStop',
             EntityType::class,
             [
-                'class' => BusLine::class,
-            ]
-        );
-
-        $builder->add(
-            'stop',
-            EntityType::class,
-            [
-                'class' => Stop::class,
-            ]
-        );
-        $builder->add(
-            'stop_order',
-            NumberType::class,
-            [
-                'label' => 'label.order',
-                'required' => true,
-                'attr' => ['max_length' => 10],
+                'class' => BusRoute::class,
+                /*'query_builder' => function (BusRouteRepository $er) {
+                    return $er->createQueryBuilder('br')
+                        ->leftJoin('br.stop', 's')
+                        ->leftJoin('br.bus_line', 'bl')
+                        ->where('bl.number = ?1')
+                        ->setParameter(1, 'numberr'); } */
+                'query_builder' => function (BusRouteRepository  $r) {
+                    return $r->showLine('124');
+                },
             ]
         );
     }
@@ -65,7 +65,7 @@ class BusRouteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => BusRoute::class,
+            'data_class' => Ticket::class,
         ]);
     }
 
@@ -79,7 +79,6 @@ class BusRouteType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'bus_route';
+        return 'ticket';
     }
 }
-

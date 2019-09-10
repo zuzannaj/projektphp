@@ -6,11 +6,13 @@ namespace App\Controller;
 
 use App\Entity\Ticket;
 use App\Entity\User;
+use App\Form\TicketType;
 use App\Repository\TicketRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -61,7 +63,7 @@ class AdminPanelController extends Controller
      *
      * @Route("/tickets", name="ticket_index")
      */
-    public function tickets(PaginatorInterface $paginator, Request $request, TicketRepository $repository): Response
+    public function viewTickets(PaginatorInterface $paginator, Request $request, TicketRepository $repository): Response
     {
         $pagination = $paginator->paginate(
             $repository->queryAll(),
@@ -85,6 +87,47 @@ class AdminPanelController extends Controller
         return $this->render(
             'admin_panel/view_one_ticket.html.twig',
             ['item' => $repository->find($id)]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param Ticket $ticket
+     * @param TicketRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route("/tickets/{id}/delete",
+     *     methods={"GET", "DELETE"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="ticket_delete"
+     * )
+     */
+    public function deleteTicket(Request $request, Ticket $ticket, TicketRepository $repository): Response
+    {
+        //$stop = $repository->find($id);
+        $form = $this->createForm(FormType::class, $ticket, ['method' => 'DELETE']);
+        $form->handleRequest($request);
+
+
+        if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
+            $form->submit($request->request->get($form->getName()));
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->delete($ticket);
+            $this->addFlash('success', 'message.deleted_successfully');
+
+            return $this->redirectToRoute('admin_panelticket_index');
+        }
+
+        return $this->render(
+            'admin_panel/delete_ticket.html.twig',
+            [
+                'form' => $form->createView(),
+                'ticket' => $ticket,
+            ]
         );
     }
 }

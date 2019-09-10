@@ -10,6 +10,7 @@ use App\Form\StopType;
 use App\Repository\StopRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -110,7 +111,7 @@ class StopController extends AbstractController
     public function delete(Request $request, Stop $stop, StopRepository $repository): Response
     {
         //$stop = $repository->find($id);
-        $form = $this->createForm(StopType::class, $stop, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $stop, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
 
@@ -124,8 +125,6 @@ class StopController extends AbstractController
 
             return $this->redirectToRoute('stop_index');
         }
-
-
 
         return $this->render(
             'stop/delete.html.twig',

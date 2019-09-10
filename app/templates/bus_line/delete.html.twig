@@ -1,10 +1,9 @@
-{% include 'nav.html.twig' %}
 {% include 'default/_form.html.twig' with {
     page_title: 'title.busline_delete',
-    page_title_param: {'%id%': busline.id},
+    page_title_param: {'%id%': busLine.id},
     attr: {
         method: 'DELETE',
-        action: url('busline_delete', {'id': busline.id}),
+        action: url('busline_delete', {'id': busLine.id}),
     },
     back_to_list_path: 'busline_index',
 } %}

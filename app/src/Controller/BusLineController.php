@@ -140,4 +140,41 @@ class BusLineController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @param Request $request
+     * @param BusLine $busLine
+     * @param BusLineRepository $repository
+     * @return Response
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/edit",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="busline_edit",
+     * )
+     */
+    public function edit(Request $request, BusLine $busLine, BusLineRepository $repository): Response
+    {
+        $form = $this->createForm(BusLineType::class, $busLine, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($busLine);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('busline_index');
+        }
+
+        return $this->render(
+            'bus_route/edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'busline' => $busLine,
+            ]
+        );
+    }
 }

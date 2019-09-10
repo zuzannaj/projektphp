@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.stop_edit'|trans({'%id%': stop.id|default('')}) }}
+    {{ 'title.busline_edit'|trans({'%id%': busLine.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.stop_edit'|trans({'%id%': stop.id|default('')}) }}</h1>
-    {{ form_start(form, { method: 'PUT', action: url('stop_edit', {id: stop.id}) }) }}
+    <h1>{{ 'title.busline_edit'|trans({'%id%': busLine.id|default('')}) }}</h1>
+    {{ form_start(form, { method: 'PUT', action: url('busline_edit', {id: busLine.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
     </div>
     <div class="form-group row float-sm-left">
-        <a href="{{ url('stop_index') }}" class="btn btn-link">
+        <a href="{{ url('busline_index') }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>

@@ -4,8 +4,11 @@
 
 {% block body %}
     <div class="container">
-            <h4 class="firststop">Podaj przystanek początkowy</h4>
-        <div class="searchbar">
+
+        <div class="searchlink" id="searchbar">
+            {% block form_label -%}
+                <label for="stop" class="firststop">Podaj przystanek początkowy</label>
+            {% endblock form_label -%}
             {{ form(form) }}
         </div>
     </div>

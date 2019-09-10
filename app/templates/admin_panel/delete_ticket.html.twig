@@ -1,0 +1,9 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'title.ticket_delete',
+    page_title_param: {'%id%': ticket.id},
+    attr: {
+        method: 'DELETE',
+        action: url('admin_panelticket_delete', {'id': ticket.id}),
+    },
+    back_to_list_path: 'admin_panelticket_index',
+} %}
