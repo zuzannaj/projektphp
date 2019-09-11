@@ -2,7 +2,6 @@
 /**
  * Stop type.
  */
-
 namespace App\Form;
 
 use App\Entity\Stop;
@@ -17,6 +16,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class StopType extends AbstractType
 {
     /**
+     * Build form.
+     *
      * @see FormTypeExtensionInterface::buildForm()
      *
      * @param FormBuilderInterface $builder
@@ -45,6 +46,8 @@ class StopType extends AbstractType
     }
 
     /**
+     * Configure options.
+     *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver): void

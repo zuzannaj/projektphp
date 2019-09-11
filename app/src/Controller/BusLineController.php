@@ -1,8 +1,7 @@
 <?php
 /**
- * Bus Line controller.
+ * Bus line controller.
  */
-
 namespace App\Controller;
 
 use App\Entity\BusLine;
@@ -23,6 +22,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class BusLineController extends AbstractController
 {
     /**
+     * Index.
+     *
      * @param Request            $request
      * @param BusLineRepository  $repository
      * @param PaginatorInterface $paginator
@@ -49,6 +50,8 @@ class BusLineController extends AbstractController
     }
 
     /**
+     * View.
+     *
      * @param BusLineRepository $repository
      * @param int               $id
      *
@@ -68,7 +71,7 @@ class BusLineController extends AbstractController
      * New action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\StopRepository        $repository Stop repository
+     * @param \App\Repository\StopRepository            $repository Stop repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -100,6 +103,8 @@ class BusLineController extends AbstractController
     }
 
     /**
+     * Delete.
+     *
      * @param Request           $request
      * @param BusLine           $busLine
      * @param BusLineRepository $repository
@@ -142,6 +147,8 @@ class BusLineController extends AbstractController
     }
 
     /**
+     * Edit.
+     *
      * @param Request           $request
      * @param BusLine           $busLine
      * @param BusLineRepository $repository
@@ -172,10 +179,10 @@ class BusLineController extends AbstractController
         }
 
         return $this->render(
-            'bus_route/edit.html.twig',
+            'bus_line/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'busline' => $busLine,
+                'busLine' => $busLine,
             ]
         );
     }

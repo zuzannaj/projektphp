@@ -2,7 +2,6 @@
 /**
  * User type.
  */
-
 namespace App\Form;
 
 use App\Entity\User;
@@ -67,6 +66,8 @@ class UserType extends AbstractType
     }
 
     /**
+     * Configure options.
+     *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -92,4 +93,3 @@ class UserType extends AbstractType
         return 'user';
     }
 }
-

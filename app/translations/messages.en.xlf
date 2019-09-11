@@ -297,9 +297,21 @@
                                                                 <target>Deleted successfully</target>
                                                             </trans-unit>
                                                             <trans-unit id="message.updated_successfully">
-                                                                                                                            <source>message.updated_successfully</source>
-                                                                                                                            <target>Updated successfully</target>
-                                                                                                                        </trans-unit>
+                                                            <source>message.updated_successfully</source>
+                                                            <target>Updated successfully</target>
+                                                            </trans-unit>
+                                                            <trans-unit id="title.ticket_delete">
+                                                            <source>title.ticket_delete</source>
+                                                            <target>Delete ticket</target>
+                                                             </trans-unit>
+                                                             <trans-unit id="title.route_delete">
+                                                                                                                         <source>title.route_delete</source>
+                                                                                                                         <target>Delete route</target>
+                                                                                                                          </trans-unit>
+                                                             <trans-unit id="title.stop_delete">
+                                                                                                                                                                         <source>title.stop_delete</source>
+                                                                                                                                                                         <target>Usuń przystanek</target>
+                                                                                                                                                                          </trans-unit>
         </body>
     </file>
 </xliff>

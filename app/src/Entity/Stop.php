@@ -80,6 +80,8 @@ class Stop
     }
 
     /**
+     * Set city.
+     *
      * @param string $city
      *
      * @return Stop
@@ -102,6 +104,8 @@ class Stop
     }
 
     /**
+     * Set name.
+     *
      * @param string $name
      *
      * @return Stop
@@ -123,6 +127,8 @@ class Stop
     const NUMBER_OF_ITEMS = 6;
 
     /**
+     * To string.
+     *
      * @return string
      */
     public function __toString(): string

@@ -10,16 +10,16 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * Class UserRepository
+ *
+ * @package App\Repository
  */
 class UserRepository extends ServiceEntityRepository
 {
 
     /**
      * UserRepository constructor.
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
@@ -28,6 +28,8 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * Query all.
+     *
      * @return QueryBuilder
      */
     public function queryAll(): QueryBuilder
@@ -37,7 +39,10 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * Get or create query builder.
+     *
      * @param QueryBuilder|null $queryBuilder
+     *
      * @return QueryBuilder
      */
     public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
@@ -46,7 +51,10 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * Save user.
+     *
      * @param User $user
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
@@ -57,6 +65,8 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * Delete user.
+     *
      * @param User $user
      *
      * @throws \Doctrine\ORM\ORMException

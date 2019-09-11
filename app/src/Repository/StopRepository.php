@@ -82,6 +82,8 @@ class StopRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find one by name.
+     *
      * @param string $name
      *
      * @return Stop|null

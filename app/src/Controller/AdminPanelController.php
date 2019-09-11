@@ -17,6 +17,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * Class AdminPanelController
+ *
+ * @package App\Controller
+ *
  * @Route("/adminpanel", name="admin_panel")
  */
 class AdminPanelController extends Controller
@@ -36,11 +40,13 @@ class AdminPanelController extends Controller
     }
 
     /**
-     * @param PaginationInterface $paginator
-     * @param Request $request
-     * @param UserRepository $repository
+     * Users.
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param PaginatorInterface $paginator
+     * @param Request            $request
+     * @param UserRepository     $repository
+     *
+     * @return Response
      *
      * @Route("/users", name="user_index")
      */
@@ -58,9 +64,11 @@ class AdminPanelController extends Controller
     }
 
     /**
+     * View tickets.
+     *
      * @param PaginatorInterface $paginator
-     * @param Request $request
-     * @param TicketRepository $repository
+     * @param Request            $request
+     * @param TicketRepository   $repository
      *
      * @return Response
      *
@@ -80,8 +88,10 @@ class AdminPanelController extends Controller
     }
 
     /**
+     * View one ticket.
+     *
      * @param TicketRepository $repository
-     * @param int $id
+     * @param int              $id
      *
      * @return Response
      *
@@ -96,8 +106,10 @@ class AdminPanelController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Ticket $ticket
+     * Delete ticket.
+     *
+     * @param Request          $request
+     * @param Ticket           $ticket
      * @param TicketRepository $repository
      *
      * @return Response
@@ -139,6 +151,8 @@ class AdminPanelController extends Controller
     }
 
     /**
+     * View one user.
+     *
      * @param UserRepository $repository
      * @param int            $id
      *

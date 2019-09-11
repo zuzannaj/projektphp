@@ -20,7 +20,7 @@ class BusLineFixtures extends AbstractBaseFixtures
     public function loadData(ObjectManager $manager): void
     {
         $this->createMany(10, 'bus_lines', function ($i) {
-            $busline= new BusLine();
+            $busline = new BusLine();
             $busline->setNumber($this->faker->numberBetween('100', '999'));
 
             return $busline;
@@ -29,4 +29,3 @@ class BusLineFixtures extends AbstractBaseFixtures
         $manager->flush();
     }
 }
-

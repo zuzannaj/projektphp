@@ -8,12 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Bus route entity.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\BusRouteRepository")
  * @ORM\Table(name="bus_routes")
  */
 class BusRoute
 {
     /**
+     * Id.
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -21,6 +25,8 @@ class BusRoute
     private $id;
 
     /**
+     * Stop order.
+     *
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank
@@ -32,18 +38,24 @@ class BusRoute
     public $stopOrder;
 
     /**
+     * Bus line.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\BusLine")
      * @ORM\JoinColumn(nullable=false)
      */
     public $busLine;
 
     /**
+     * Stop.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Stop", cascade={"remove"}))
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="stop_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     public $stop;
 
     /**
+     * Get id.
+     *
      * @return int|null
      */
     public function getId(): ?int
@@ -52,6 +64,8 @@ class BusRoute
     }
 
     /**
+     * Get stop order.
+     *
      * @return int|null
      */
     public function getStopOrder(): ?int
@@ -60,6 +74,8 @@ class BusRoute
     }
 
     /**
+     * Set stop order.
+     *
      * @param int $stopOrder
      *
      * @return BusRoute
@@ -72,6 +88,8 @@ class BusRoute
     }
 
     /**
+     * Get bus line.
+     *
      * @return BusLine|null
      */
     public function getBusLine(): ?BusLine
@@ -80,6 +98,8 @@ class BusRoute
     }
 
     /**
+     * Set bus line.
+     *
      * @param BusLine|null $busLine
      *
      * @return BusRoute
@@ -92,6 +112,8 @@ class BusRoute
     }
 
     /**
+     * Get stop.
+     *
      * @return Stop|null
      */
     public function getStop(): ?Stop
@@ -100,6 +122,8 @@ class BusRoute
     }
 
     /**
+     * Set stop.
+     *
      * @param Stop|null $stop
      *
      * @return BusRoute
@@ -121,6 +145,8 @@ class BusRoute
     const NUMBER_OF_ITEMS = 10;
 
     /**
+     * To string.
+     *
      * @return string
      */
     public function __toString(): string

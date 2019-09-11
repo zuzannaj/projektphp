@@ -2,7 +2,6 @@
 /**
  * Security controller.
  */
-
 namespace App\Controller;
 
 use App\Entity\User;
@@ -68,13 +67,15 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Register.
+     *
      * @param Request                      $request
      * @param UserRepository               $repository
      * @param UserPasswordEncoderInterface $encoder
      *
      * @return Response
      *
-     * @throws
+     * @throws \Exception
      *
      * @Route(
      *     "/register",
@@ -82,7 +83,8 @@ class SecurityController extends AbstractController
      *     name="user_add",
      * )
      */
-    public function register(Request $request, UserRepository $repository, UserPasswordEncoderInterface $encoder): Response {
+    public function register(Request $request, UserRepository $repository, UserPasswordEncoderInterface $encoder): Response
+    {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -110,6 +112,5 @@ class SecurityController extends AbstractController
             'security/register.html.twig',
             ['form' => $form->createView()]
         );
-
     }
 }

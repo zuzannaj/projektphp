@@ -2,7 +2,6 @@
 /**
  * Bus route type.
  */
-
 namespace App\Form;
 
 use App\Entity\BusLine;
@@ -60,6 +59,8 @@ class BusRouteType extends AbstractType
     }
 
     /**
+     * Configure options.
+     *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -82,4 +83,3 @@ class BusRouteType extends AbstractType
         return 'bus_route';
     }
 }
-

@@ -1,8 +1,7 @@
 <?php
 /**
- * Bus Route controller.
+ * Bus route controller.
  */
-
 namespace App\Controller;
 
 use App\Entity\BusRoute;
@@ -23,11 +22,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class BusRouteController extends AbstractController
 {
     /**
-     * Index action.
+     * Index.
      *
-     * @param \App\Repository\BusRouteRepository $repository Repository
+     * @param BusRouteRepository $repository
+     * @param PaginatorInterface $paginator
+     * @param Request            $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response
      *
      * @Route(
      *     "/",
@@ -49,6 +50,8 @@ class BusRouteController extends AbstractController
     }
 
     /**
+     * View.
+     *
      * @param BusRouteRepository $repository
      * @param int                $id
      *
@@ -65,6 +68,8 @@ class BusRouteController extends AbstractController
     }
 
     /**
+     * New.
+     *
      * @param Request            $request
      * @param BusRouteRepository $repository
      *
@@ -98,6 +103,8 @@ class BusRouteController extends AbstractController
     }
 
     /**
+     * Delete.
+     *
      * @param Request            $request
      * @param BusRoute           $busRoute
      * @param BusRouteRepository $repository
@@ -140,6 +147,8 @@ class BusRouteController extends AbstractController
     }
 
     /**
+     * Edit.
+     *
      * @param Request            $request
      * @param BusRoute           $busRoute
      * @param BusRouteRepository $repository
@@ -177,6 +186,4 @@ class BusRouteController extends AbstractController
             ]
         );
     }
-
 }
-

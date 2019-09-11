@@ -263,6 +263,14 @@
                                                     <source>title.select_line</source>
                                                     <target>Wybierz linię</target>
                                                 </trans-unit>
+                                                <trans-unit id="title.stop_delete">
+                                                                                                                                                            <source>title.stop_delete</source>
+                                                                                                                                                            <target>Usuń przystanek</target>
+                                                                                                                                                             </trans-unit>
+                                                <trans-unit id="title.ticket_delete">
+                                                                                                            <source>title.ticket_delete</source>
+                                                                                                            <target>Usuń bilet</target>
+                                                                                                             </trans-unit>
                                                 <trans-unit id="title.busline_edit">
                                                                             <source>title.busline_edit</source>
                                                                             <target>Edytuj linię</target>
@@ -280,6 +288,10 @@
                                                                                                                                         <source>message.updated_successfully</source>
                                                                                                                                         <target>Zaktualizowano</target>
                                                                                                                                     </trans-unit>
+                                                                                                                                    <trans-unit id="title.route_delete">
+                                                                                                                                                                                                <source>title.route_delete</source>
+                                                                                                                                                                                                <target>Usuń trasę</target>
+                                                                                                                                                                                                 </trans-unit>
         </body>
     </file>
 </xliff>

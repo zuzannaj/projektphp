@@ -2,7 +2,6 @@
 /**
  * User entity.
  */
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -149,6 +148,8 @@ class User implements UserInterface
     private $firstName;
 
     /**
+     * Tickets.
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="user", orphanRemoval=true)
      */
     private $tickets;
@@ -224,6 +225,8 @@ class User implements UserInterface
     }
 
     /**
+     * Get username.
+     *
      * {@inheritdoc}
      *
      * @see UserInterface
@@ -280,6 +283,8 @@ class User implements UserInterface
     }
 
     /**
+     * Get salt.
+     *
      * @see UserInterface
      */
     public function getSalt()
@@ -288,6 +293,8 @@ class User implements UserInterface
     }
 
     /**
+     * Erase credentials.
+     *
      * @see UserInterface
      */
     public function eraseCredentials()
@@ -329,6 +336,8 @@ class User implements UserInterface
     }
 
     /**
+     * Get tickets.
+     *
      * @return Collection|Ticket[]
      */
     public function getTickets(): Collection
@@ -337,6 +346,8 @@ class User implements UserInterface
     }
 
     /**
+     * Add ticket.
+     *
      * @param Ticket $ticket
      *
      * @return User
@@ -352,6 +363,8 @@ class User implements UserInterface
     }
 
     /**
+     * Remove ticket.
+     *
      * @param Ticket $ticket
      *
      * @return User
@@ -370,6 +383,8 @@ class User implements UserInterface
     }
 
     /**
+     * To string.
+     *
      * @return string
      */
     public function __toString(): string

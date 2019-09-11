@@ -2,7 +2,6 @@
 /**
  * Bus line type.
  */
-
 namespace App\Form;
 
 use App\Entity\BusLine;
@@ -38,7 +37,6 @@ class BusLineType extends AbstractType
                 'attr' => ['max_length' => 3],
             ]
         );
-
     }
 
     /**
@@ -64,4 +62,3 @@ class BusLineType extends AbstractType
         return 'bus_line';
     }
 }
-

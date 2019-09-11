@@ -9,11 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class HomeController
+ *
  * @package App\Controller
  */
 class HomeController extends Controller
 {
     /**
+     * Index.
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/", name="homepage")

@@ -10,10 +10,9 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method BusLine|null find($id, $lockMode = null, $lockVersion = null)
- * @method BusLine|null findOneBy(array $criteria, array $orderBy = null)
- * @method BusLine[]    findAll()
- * @method BusLine[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * Class BusLineRepository
+ *
+ * @package App\Repository
  */
 class BusLineRepository extends ServiceEntityRepository
 {
@@ -44,7 +43,7 @@ class BusLineRepository extends ServiceEntityRepository
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?: $this->createQueryBuilder('bl');
     }
@@ -78,9 +77,11 @@ class BusLineRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find one by number.
+     *
      * @param string $line
      *
-     * @return BusLine|null
+     * @return object|null
      */
     public function findOneByNumber(string $line)
     {
@@ -88,6 +89,8 @@ class BusLineRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find by example field.
+     *
      * @param string $value
      *
      * @return mixed
@@ -105,9 +108,11 @@ class BusLineRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find one by some field.
+     *
      * @param string $value
      *
-     * @return BusLine|null
+     * @return BusLine
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

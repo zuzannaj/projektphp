@@ -2,7 +2,6 @@
 /**
  * Buy ticket type.
  */
-
 namespace App\Form;
 
 use App\Entity\BusRoute;
@@ -51,6 +50,8 @@ class BuyTicketType extends AbstractType
     }
 
     /**
+     * Configure options.
+     *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)

@@ -5,7 +5,14 @@
 {% endblock %}
 
 {% block body %}
+    {% if app.user %}
     <h1>{{ 'title.select_line'|trans }}</h1>
+        {% else %}
+        <h1>Dostępne linie</h1>
+    {% endif %}
+    {% if not app.user %}
+        <h3><a href="{{ path('security_login') }}">Zaloguj się, żeby kupić bilet</a></h3>
+    {% endif %}
     {% if pagination is defined and pagination|length %}
 
         <div class="navigation text-center">
@@ -17,7 +24,9 @@
             <tr>
                 <th>{{ 'label.stop'|trans }}</th>
                 <th>{{ 'label.bus_line'|trans }}</th>
+                {% if app.user %}
                 <th>{{ 'label.actions'|trans }}</th>
+                    {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -25,11 +34,13 @@
                 <tr>
                     <td>{{ busroute.name }}</td>
                     <td>{{ busroute.number }}</td>
+                    {% if app.user %}
                     <td>
                         <a href="{{ url('searchticket_buy', {name: busroute.name, number: busroute.number}) }}" title="{{ 'action.select'|trans }}">
                             {{ 'action.select'|trans }}
                         </a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

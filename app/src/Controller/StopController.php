@@ -2,7 +2,6 @@
 /**
  * Stop controller.
  */
-
 namespace App\Controller;
 
 use App\Entity\Stop;
@@ -23,6 +22,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class StopController extends AbstractController
 {
     /**
+     * Index.
+     *
      * @param StopRepository     $repository
      * @param PaginatorInterface $paginator
      * @param Request            $request
@@ -49,6 +50,8 @@ class StopController extends AbstractController
     }
 
     /**
+     * View.
+     *
      * @param StopRepository $repository
      * @param int            $id
      *
@@ -65,6 +68,8 @@ class StopController extends AbstractController
     }
 
     /**
+     * New.
+     *
      * @param Request        $request
      * @param StopRepository $repository
      *
@@ -98,6 +103,8 @@ class StopController extends AbstractController
     }
 
     /**
+     * Delete.
+     *
      * @param Request        $request
      * @param Stop           $stop
      * @param StopRepository $repository
@@ -142,6 +149,8 @@ class StopController extends AbstractController
     }
 
     /**
+     * Edit.
+     *
      * @param Request        $request
      * @param Stop           $stop
      * @param StopRepository $repository

@@ -2,7 +2,6 @@
 /**
  * Login form authenticator.
  */
-
 namespace App\Security;
 
 use App\Entity\User;
@@ -22,7 +21,9 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 /**
- * Class LoginFormAuthenticator.
+ * Class LoginFormAuthenticator
+ *
+ * @package App\Security
  */
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {

@@ -12,7 +12,6 @@ use App\Form\BuyTicketType;
 use App\Repository\BusRouteRepository;
 use App\Repository\TicketRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -59,11 +58,13 @@ class SearchController extends Controller
     }
 
     /**
+     * Handle search.
+     *
      * @param Request            $request
      * @param BusRouteRepository $repository
      * @param PaginatorInterface $paginator
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      *
      * @Route("/searchresults", name="searchresults")
      */
@@ -83,6 +84,8 @@ class SearchController extends Controller
     }
 
     /**
+     * Buy ticket.
+     *
      * @param Request          $request
      * @param TicketRepository $repository
      * @param string           $name
@@ -91,11 +94,9 @@ class SearchController extends Controller
      * @param BusLine          $busLine
      *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     *
-     * @ParamConverter("stop", class="App\Entity\Stop")
-     * @ParamConverter("busLine", class="App\Entity\BusLine")
      *
      * @Route("/searchresults/{name}/{number}/buy", methods={"GET", "POST", "PUT"}, name="ticket_buy")
      */
@@ -125,6 +126,8 @@ class SearchController extends Controller
     }
 
     /**
+     * View tickets.
+     *
      * @param PaginatorInterface $paginator
      * @param TicketRepository   $repository
      * @param Request            $request
@@ -149,6 +152,8 @@ class SearchController extends Controller
     }
 
     /**
+     * View one.
+     *
      * @param TicketRepository $repository
      * @param int              $id
      *
@@ -165,10 +170,14 @@ class SearchController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Ticket $ticket
+     * Delete ticket.
+     *
+     * @param Request          $request
+     * @param Ticket           $ticket
      * @param TicketRepository $repository
+     *
      * @return Response
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *

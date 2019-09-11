@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Ticket
 {
     /**
+     * Id.
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -22,23 +24,31 @@ class Ticket
     private $id;
 
     /**
+     * Created at.
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * User.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
+     * Bus line.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\BusLine")
      * @ORM\JoinColumn(nullable=false)
      */
     public $busLine;
 
     /**
+     * First stop.
+     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\Length(
@@ -49,6 +59,8 @@ class Ticket
     public $firstStop;
 
     /**
+     * Last stop.
+     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\Length(
@@ -67,6 +79,8 @@ class Ticket
     }
 
     /**
+     * Get id.
+     *
      * @return int|null
      */
     public function getId(): int
@@ -75,6 +89,8 @@ class Ticket
     }
 
     /**
+     * Get created at.
+     *
      * @return \DateTimeInterface|null
      */
     public function getCreatedAt(): ?\DateTimeInterface
@@ -83,6 +99,8 @@ class Ticket
     }
 
     /**
+     * Set created at.
+     *
      * @param \DateTimeInterface $createdAt
      *
      * @return Ticket
@@ -95,6 +113,8 @@ class Ticket
     }
 
     /**
+     * Get user.
+     *
      * @return mixed
      */
     public function getUser()
@@ -103,6 +123,8 @@ class Ticket
     }
 
     /**
+     * Set user.
+     *
      * @param User|null $user
      *
      * @return Ticket
@@ -115,6 +137,8 @@ class Ticket
     }
 
     /**
+     * Get bus line.
+     *
      * @return \App\Entity\BusLine
      */
     public function getBusLine(): ?BusLine
@@ -123,6 +147,8 @@ class Ticket
     }
 
     /**
+     * Set bus line.
+     *
      * @param BusLine|null $busLine
      *
      * @return Ticket
@@ -135,6 +161,8 @@ class Ticket
     }
 
     /**
+     * Get first stop.
+     *
      * @return string|null
      */
     public function getFirstStop(): ?string
@@ -143,6 +171,8 @@ class Ticket
     }
 
     /**
+     * Set first stop.
+     *
      * @param string $firstStop
      *
      * @return Ticket
@@ -155,6 +185,8 @@ class Ticket
     }
 
     /**
+     * Get last stop.
+     *
      * @return string|null
      */
     public function getLastStop(): ?string
@@ -163,6 +195,8 @@ class Ticket
     }
 
     /**
+     * Set last stop.
+     *
      * @param string $lastStop
      *
      * @return Ticket

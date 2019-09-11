@@ -30,4 +30,3 @@ class StopFixtures extends AbstractBaseFixtures
         $manager->flush();
     }
 }
-

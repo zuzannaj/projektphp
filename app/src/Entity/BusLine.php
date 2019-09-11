@@ -8,12 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Bus line entity.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\BusLineRepository")
  * @ORM\Table(name="bus_lines")
  */
 class BusLine
 {
     /**
+     * Id.
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -21,7 +25,10 @@ class BusLine
     private $id;
 
     /**
+     * Number.
+     *
      * @var int
+     *
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank
@@ -33,6 +40,8 @@ class BusLine
     private $number;
 
     /**
+     * Get id.
+     *
      * @return int|null
      */
     public function getId(): int
@@ -41,19 +50,21 @@ class BusLine
     }
 
     /**
+     * Get number.
+     *
      * @return int|null
      */
-
     public function getNumber(): ?int
     {
         return $this->number;
     }
 
     /**
+     * Set number.
+     *
      * @param int $number
      * @return BusLine
      */
-
     public function setNumber(int $number): self
     {
         $this->number = $number;
@@ -62,6 +73,8 @@ class BusLine
     }
 
     /**
+     * To string.
+     *
      * @return string
      */
     public function __toString(): string
