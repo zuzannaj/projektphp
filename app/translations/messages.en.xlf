@@ -2,6 +2,30 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+        <trans-unit id="text.view_stops">
+                                    <source>text.view_stops</source>
+                                    <target>Bus stops</target>
+                                </trans-unit>
+                                <trans-unit id="text.view_lines">
+                                                <source>text.view_lines</source>
+                                                <target>Bus lines</target>
+                                            </trans-unit>
+        <trans-unit id="label.updated_at">
+                        <source>label.updated_at</source>
+                        <target>Updated at</target>
+                    </trans-unit>
+                    <trans-unit id="label.firstname">
+                        <source>label.firstname</source>
+                        <target>First name</target>
+                    </trans-unit>
+                    <trans-unit id="label.confirm_pass">
+                                            <source>label.confirm_pass</source>
+                                            <target>Confirm password</target>
+                                        </trans-unit>
+                    <trans-unit id="title.user_add">
+                        <source>title.user_add</source>
+                        <target>Register</target>
+                    </trans-unit>
             <trans-unit id="label.id">
                 <source>label.id</source>
                 <target>Id</target>
@@ -153,7 +177,7 @@
 
             <trans-unit id="title.login">
                 <source>title.login</source>
-                <target>Login</target>
+                <target>Log in</target>
             </trans-unit>
             <trans-unit id="label.email">
                 <source>label.email</source>
@@ -187,6 +211,27 @@
                 <source>Login</source>
                 <target>Login</target>
             </trans-unit>
+            <trans-unit id="title.changePassword">
+                            <source>title.changePassword</source>
+                            <target>Change password</target>
+                        </trans-unit>
+                        <trans-unit id="title.change_profile">
+                            <source>title.change_profile</source>
+                            <target>Change data</target>
+                        </trans-unit>
+                        <trans-unit id="label.role">
+                            <source>label.role</source>
+                            <target>User role</target>
+                        </trans-unit>
+                        <trans-unit id="button.changePassword">
+                            <source>button.changePassword</source>
+                            <target>Change password</target>
+                        </trans-unit>
+                        <trans-unit id="button.changeData">
+                            <source>button.changeData</source>
+                            <target>Change data</target>
+                        </trans-unit>
+
             <trans-unit id="Lessons">
                 <source>Lessons</source>
                 <target>Lessons</target>
@@ -312,6 +357,14 @@
                                                                                                                                                                          <source>title.stop_delete</source>
                                                                                                                                                                          <target>Usuń przystanek</target>
                                                                                                                                                                           </trans-unit>
+                                                                                                                                                                          <trans-unit id="label.new_password">
+                                                                                                                                                                                                                                                      <source>label.new_password</source>
+                                                                                                                                                                                                                                                      <target>New password</target>
+                                                                                                                                                                                                                                                  </trans-unit>
+                                                                                                                                                                                                                                                  <trans-unit id="label.repeat_new_password">
+                                                                                                                                                                                                                                                      <source>label.repeat_new_password</source>
+                                                                                                                                                                                                                                                      <target>Repeat new password</target>
+                                                                                                                                                                                                                                                  </trans-unit>
         </body>
     </file>
 </xliff>

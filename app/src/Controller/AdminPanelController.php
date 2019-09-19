@@ -19,8 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class AdminPanelController
  *
- * @package App\Controller
- *
  * @Route("/adminpanel", name="admin_panel")
  */
 class AdminPanelController extends Controller

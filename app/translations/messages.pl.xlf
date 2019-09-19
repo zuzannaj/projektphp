@@ -2,10 +2,35 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="pl" datatype="plaintext" original="file.ext">
         <body>
+        <trans-unit id="label.updated_at">
+                                <source>label.updated_at</source>
+                                <target>Zaktualizowano</target>
+                            </trans-unit>
+                            <trans-unit id="label.firstname">
+                                <source>label.firstname</source>
+                                <target>Imię</target>
+                            </trans-unit>
+                            <trans-unit id="label.confirm_pass">
+                                                    <source>label.confirm_pass</source>
+                                                    <target>Powtórz hasło</target>
+                                                </trans-unit>
+                            <trans-unit id="title.user_add">
+                                <source>title.user_add</source>
+                                <target>Zarejestruj się</target>
+                            </trans-unit>
             <trans-unit id="label.id">
                 <source>label.id</source>
                 <target>Id</target>
             </trans-unit>
+            <trans-unit id="text.view_stops">
+                            <source>text.view_stops</source>
+                            <target>Przystanki</target>
+                        </trans-unit>
+                        <trans-unit id="text.view_lines">
+                                        <source>text.view_lines</source>
+                                        <target>Linie autobusowe</target>
+                                    </trans-unit>
+
             <trans-unit id="title.stop_list">
                 <source>title.stop_list</source>
                 <target>Przystanki</target>
@@ -99,6 +124,34 @@
                 <source>action.back_to_list</source>
                 <target>Powrót</target>
             </trans-unit>
+            <trans-unit id="title.changePassword">
+                                        <source>title.changePassword</source>
+                                        <target>Zmień hasło</target>
+                                    </trans-unit>
+                                    <trans-unit id="title.change_profile">
+                                        <source>title.change_profile</source>
+                                        <target>Zmień dane</target>
+                                    </trans-unit>
+                                    <trans-unit id="label.role">
+                                        <source>label.role</source>
+                                        <target>Rola użytkownika</target>
+                                    </trans-unit>
+                                    <trans-unit id="button.changePassword">
+                                        <source>button.changePassword</source>
+                                        <target>Zmień hasło</target>
+                                    </trans-unit>
+                                    <trans-unit id="button.changeData">
+                                        <source>button.changeData</source>
+                                        <target>Zmień dane</target>
+                                    </trans-unit>
+                                    <trans-unit id="label.new_password">
+                                                                            <source>label.new_password</source>
+                                                                            <target>Nowe hasło</target>
+                                                                        </trans-unit>
+                                                                        <trans-unit id="label.repeat_new_password">
+                                                                            <source>label.repeat_new_password</source>
+                                                                            <target>Powtórz nowe hasło</target>
+                                                                        </trans-unit>
 
             <trans-unit id="action.save">
                 <source>action.save</source>
@@ -153,7 +206,7 @@
 
             <trans-unit id="title.login">
                 <source>title.login</source>
-                <target>Login</target>
+                <target>Zaloguj się</target>
             </trans-unit>
             <trans-unit id="label.email">
                 <source>label.email</source>
@@ -223,6 +276,10 @@
                 <source>title.homepage</source>
                 <target>Strona główna</target>
             </trans-unit>
+            <trans-unit id="label.tickets">
+                                        <source>label.tickets</source>
+                                        <target>Bilety</target>
+                                    </trans-unit>
             <trans-unit id="title.admin">
                 <source>title.admin</source>
                 <target>Panel admina</target>

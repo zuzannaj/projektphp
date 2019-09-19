@@ -11,8 +11,6 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * Class BusRouteRepository
- *
- * @package App\Repository
  */
 class BusRouteRepository extends ServiceEntityRepository
 {
@@ -85,7 +83,7 @@ class BusRouteRepository extends ServiceEntityRepository
      *
      * @return mixed
      */
-    public function search(string $value)
+    public function search(string $value = null)
     {
         $queryb = $this->getOrCreateQueryBuilder();
 
@@ -118,5 +116,24 @@ class BusRouteRepository extends ServiceEntityRepository
             ->orderBy('br.stopOrder', 'ASC');
         //->getQuery()
             //->getResult();
+    }
+
+    /**
+     * Show lines.
+     *
+     * @param int $value
+     *
+     * @return QueryBuilder
+     */
+    public function showLines(int $value)
+    {
+        return $this->createQueryBuilder('br')
+            ->leftJoin('br.stop', 's')
+            ->leftJoin('br.busLine', 'bl')
+            ->addSelect('bl.number')
+            ->addSelect('br.stopOrder')
+            ->where('bl.number = :value')
+            ->setParameter('value', $value)
+            ->orderBy('br.stopOrder', 'ASC');
     }
 }

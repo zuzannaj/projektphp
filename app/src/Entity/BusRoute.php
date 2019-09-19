@@ -48,8 +48,8 @@ class BusRoute
     /**
      * Stop.
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Stop", cascade={"remove"}))
-     * @ORM\JoinColumn(name="stop_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Stop")
+     * @ORM\JoinColumn(name="stop_id", referencedColumnName="id", nullable=false, onDelete="SET NULL")
      */
     public $stop;
 

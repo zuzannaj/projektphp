@@ -11,8 +11,6 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * Class BusLineRepository
- *
- * @package App\Repository
  */
 class BusLineRepository extends ServiceEntityRepository
 {

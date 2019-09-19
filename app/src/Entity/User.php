@@ -392,4 +392,32 @@ class User implements UserInterface
         // to show the name of the Category in the select
         return $this->id;
     }
+
+    /**
+     * @Assert\Length(
+     *     min = 3,
+     *     minMessage = "{{ 'error.password_too_short'|trans }}",
+     *     groups = {"change_password"}
+     * )
+     */
+    protected $newPassword;
+
+    /**
+     * Getter for the newPassword.
+     *
+     * @return string|null newPassword
+     */
+    public function getNewPassword(): ?string
+    {
+        return $this->newPassword;
+    }
+    /**
+     * Setter for the newPassword.
+     *
+     * @param string $newPassword newPassword
+     */
+    public function setNewPassword(string $newPassword): void
+    {
+        $this->newPassword = $newPassword;
+    }
 }

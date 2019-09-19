@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ user.firstName }}
+{% endblock %}
+
+{% block body %}
+        {% if user is defined and user|length %}
+                    <dl>
+                        <dt>{{ 'label.firstname'|trans }}</dt>
+                        <dd>{{ user.firstName }}</dd>
+                        <dt>{{ 'label.email'|trans }}</dt>
+                        <dd>{{ user.email }}</dd>
+                        <dt>{{ 'label.role'|trans }}</dt>
+                        <dd>{% for role in roles %}
+                                        {{ role }}
+                            {% endfor %}</dd>
+                        <dt>{{ 'label.created_at'|trans }}</dt>
+                        <dd>{{ user.createdAt|localizeddate }}</dd>
+                    </dl>
+                    {% if app.user and app.user == user %}
+                        <a href="{{ path('profile_change_password', {id: user.id}) }}">{{ 'button.changePassword'|trans }}</a><br>
+                        <a href="{{ path('profile_change', {id: user.id}) }}">{{ 'button.changeData'|trans }}</a>
+                    {% endif %}
+        {% else %}
+            <p>
+                {{ 'message.item_not_found'|trans }}
+            </p>
+        {% endif %}
+{% endblock %}

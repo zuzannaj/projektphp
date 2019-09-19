@@ -63,6 +63,7 @@ class BusLine
      * Set number.
      *
      * @param int $number
+     *
      * @return BusLine
      */
     public function setNumber(int $number): self

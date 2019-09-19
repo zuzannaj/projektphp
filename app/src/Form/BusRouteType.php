@@ -14,7 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class StopType.
+ * Class BusRouteType.
  *
  */
 class BusRouteType extends AbstractType

@@ -23,8 +23,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class SearchController
  *
- * @package App\Controller
- *
  * @Route("/search", name="search")
  */
 class SearchController extends Controller
@@ -33,6 +31,8 @@ class SearchController extends Controller
      * Search action.
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @param string $query
      *
      * @Route("/", name="search_index")
      */
@@ -71,7 +71,6 @@ class SearchController extends Controller
     public function handleSearch(Request $request, BusRouteRepository $repository, PaginatorInterface $paginator)
     {
         $query = $request->request->get('form')['query'];
-
         $pagination = $paginator->paginate(
             $repository->search($query),
             $request->query->getInt('page', 1),
@@ -80,6 +79,7 @@ class SearchController extends Controller
 
         return $this->render('search/searchresults.html.twig', [
             'pagination' => $pagination,
+            'query' => $query,
         ]);
     }
 
